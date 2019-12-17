@@ -1,11 +1,10 @@
 package com.codingdojo.resourcefull.models;
+package com.codingdojo.resourcefull.models;
+import java.util.Date;
 
 public class Community {
 
 }
-package com.codingdojo.resourcefull.models;
-
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
