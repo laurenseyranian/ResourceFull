@@ -40,16 +40,7 @@ public class UserController {
 		return "authentication.jsp";
 	}
 
-//--------------------------------------------------------------------------------------------
-// GET route for READING home page 
-//--------------------------------------------------------------------------------------------
-	@RequestMapping("/home")
-	public String home(HttpSession session, Model model) {
-		Long id = (Long) session.getAttribute("userId");
-		User user = userService.findUserById(id);
-		model.addAttribute("user", user);
-		return "home.jsp";
-	}
+
 //--------------------------------------------------------------------------------------------
 //								REGISTRATION ROUTES
 //--------------------------------------------------------------------------------------------
