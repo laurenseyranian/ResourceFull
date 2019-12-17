@@ -1,17 +1,19 @@
 package com.codingdojo.resourcefull.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
@@ -64,6 +66,12 @@ public class User {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+//----------------------------------------------------------------
+//	Relationships
+//----------------------------------------------------------------
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Message> messages;
+
 //----------------------------------------------------------------
 //	Getters and Setters
 //----------------------------------------------------------------
