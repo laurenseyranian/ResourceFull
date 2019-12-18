@@ -1,12 +1,10 @@
 package com.codingdojo.resourcefull.controllers;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.codingdojo.resourcefull.models.User;
+import com.codingdojo.resourcefull.models.Community;
 import com.codingdojo.resourcefull.services.CommunityService;
 import com.codingdojo.resourcefull.services.UserService;
 
@@ -24,6 +22,15 @@ public class CommunityController {
 		this.communityService = communityService;
 		this.userService = userService;
 	}
+	
+//-------------------------------------------------------------------------------------------------------
+// Dictionary for all of the states
+//-------------------------------------------------------------------------------------------------------
+	private final String[] names = { "North Oakland", "West Oakland", "Central Oakland", "East Oakland", "Lake Merritt", "Oakland Hills"};
+
+	public String[] getNames() {
+		return names;
+	}	
 //--------------------------------------------------------------------------------------------
 //									Routes
 //--------------------------------------------------------------------------------------------
@@ -48,9 +55,16 @@ public class CommunityController {
 // GET route for READING create page 
 //--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/addcommunity")
-	public String create() {
+	public String create(@ModelAttribute("community") Community community) {
 		return "create.jsp";
 	}
+//--------------------------------------------------------------------------------------------
+// POST route for CREATING a community 
+//--------------------------------------------------------------------------------------------
+//	@RequestMapping("/resourcefull/addcommunity")
+//	public String create() {
+//		return "create.jsp";
+//	}
 //--------------------------------------------------------------------------------------------
 // GET route for READING details page 
 //--------------------------------------------------------------------------------------------
@@ -64,6 +78,18 @@ public class CommunityController {
 	@RequestMapping("/resourcefull/editcommunity")
 	public String edit() {
 		return "edit.jsp";
+	}
+
+
+
+	public CommunityService getCommunityService() {
+		return communityService;
+	}
+
+
+
+	public UserService getUserService() {
+		return userService;
 	}
 
 }
