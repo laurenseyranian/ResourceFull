@@ -1,13 +1,14 @@
 package com.codingdojo.resourcefull.models;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -41,25 +42,17 @@ public class Community {
 	
 	private double longitude;
 	
-	//calculated by app
-	
-	@Transient
-	private int water; 
-	
-	@Transient
-	private int food;
-	
-	@Transient
-	private int hygienekits; 
-	
+	@ElementCollection
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date food_filledAt;
+	private List<Date> food_filledAt;
 	
+	@ElementCollection
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date water_filledAt;
+	private List<Date> water_filledAt;
 	
+	@ElementCollection
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date hygienekits_filledAt;
+	private List<Date> hygienekits_filledAt;
 	
 	private String liaisoncontactname;
 	
@@ -70,6 +63,7 @@ public class Community {
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
 	
 //----------------------------------------------------------------
 //	Relationships
@@ -92,8 +86,6 @@ public class Community {
 		this.street = street;
 		this.city = city;
 		this.state = state;
-		this.water = water;
-		this.hygienekits = hygienekits;
 		this.setLiaisoncontactname(liaisoncontactname);
 		this.setLiaisoncontactnumber(liaisoncontactnumber);
 		this.createdAt = createdAt;
@@ -102,6 +94,7 @@ public class Community {
 //----------------------------------------------------------------
 //	Getters and Setters
 //----------------------------------------------------------------
+	
 	public Long getId() {
 		return id;
 	}
@@ -121,16 +114,10 @@ public class Community {
 		this.pets = pets;
 	}
 	public int getWater() {
-		return water;
-	}
-	public void setWater(int water) {
-		this.water = water;
+		return (residents * 4)+(pets * 3);
 	}
 	public int getHygienekits() {
-		return hygienekits;
-	}
-	public void setHygienekits(int hygienekits) {
-		this.hygienekits = hygienekits;
+		return (residents*5);
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -181,10 +168,7 @@ public class Community {
 		this.name = name;
 	}
 	public int getFood() {
-		return food;
-	}
-	public void setFood(int food) {
-		this.food = food;
+		return (residents * 21);
 	}
 	public String getLiaisoncontactname() {
 		return liaisoncontactname;
@@ -198,4 +182,29 @@ public class Community {
 	public void setLiaisoncontactnumber(String liaisoncontactnumber) {
 		this.liaisoncontactnumber = liaisoncontactnumber;
 	}
+
+	public List<Date> getFood_filledAt() {
+		return food_filledAt;
+	}
+
+	public void setFood_filledAt(List<Date> food_filledAt) {
+		this.food_filledAt = food_filledAt;
+	}
+
+	public List<Date> getWater_filledAt() {
+		return water_filledAt;
+	}
+
+	public void setWater_filledAt(List<Date> water_filledAt) {
+		this.water_filledAt = water_filledAt;
+	}
+
+	public List<Date> getHygienekits_filledAt() {
+		return hygienekits_filledAt;
+	}
+
+	public void setHygienekits_filledAt(List<Date> hygienekits_filledAt) {
+		this.hygienekits_filledAt = hygienekits_filledAt;
+	}
+	
 }

@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="container">
-		<form:form action="/community/create" method="post" modelAttribute="community">			
+		<form:form action="/community/process" method="post" modelAttribute="community">			
 			<p>
 				<form:label path="name" class="col-sm-1 col-form-label">Neighborhood:</form:label>
 				<form:select path="name">

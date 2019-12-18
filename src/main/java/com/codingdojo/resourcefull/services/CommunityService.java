@@ -1,4 +1,7 @@
 package com.codingdojo.resourcefull.services;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.resourcefull.models.Community;
@@ -40,10 +43,32 @@ public class CommunityService {
 	}
 	
 //  -----------------------------------------------------------------------------------------
+//  READ ALL communities by ID
+//  -----------------------------------------------------------------------------------------
+	public List<Community> findAll() {
+		return communityRepository.findAll();
+	}
+	
+//  -----------------------------------------------------------------------------------------
 //  DELETE community by ID
 //  -----------------------------------------------------------------------------------------
 	public void deleteCommunity(Long community_id) {
 		communityRepository.deleteById(community_id);
+	}
+	
+	public void filledWater(Community comm) {
+		comm.getWater_filledAt().add(new Date());
+		communityRepository.save(comm);
+	}
+	
+	public void filledFood(Community comm) {
+		comm.getFood_filledAt().add(new Date());
+		communityRepository.save(comm);
+	}
+	
+	public void filledHygiene(Community comm) {
+		comm.getHygienekits_filledAt().add(new Date());
+		communityRepository.save(comm);
 	}
 
 }

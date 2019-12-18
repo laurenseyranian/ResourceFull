@@ -12,7 +12,23 @@
 </head>
 <body>
 	<div class="container">
+
+
+
+
 	
+		<form action="/resourcefull/neighborhood/${community.id}" method="post" >
+			<input type="hidden" name="resource_type" value="food"/>
+			<button type="submit" >Fill Food</button>
+		</form>
+		<form action="/resourcefull/neighborhood/${community.id}" method="post" >
+			<input type="hidden" name="resource_type" value="water"/>
+			<button type="submit" >Fill Water</button>
+		</form>
+		<form action="/resourcefull/neighborhood/${community.id}" method="post" >
+			<input type="hidden" name="resource_type" value="hygiene"/>
+			<button type="submit" >Fill Hygiene</button>
+		</form>
 	
 	
 	
