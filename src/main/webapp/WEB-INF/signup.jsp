@@ -1,28 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+ 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/css/signup.css" rel="stylesheet" type="text/css"/>
     
-    <link href="/css/authentication.css" rel="stylesheet" type="text/css"/>
-    
-    <title>Authentication Page</title>
+    <title>Resourcefull - Sign-Up</title>
     
 </head>
 <body>
 	<div class="container">
 		<div class="register">
 	    	<h1 class="display-4 text-center text-success">Register</h1>
-	    
-	    	<p class="text-danger"><c:out value="${registrationError}" /></p>
-	    	
+	    	    	
 		    <p class="text-danger"><form:errors path="user.*"/></p>
 		    
-		    <form:form method="POST" action="/registration" modelAttribute="user">
+		    <form:form method="POST" action="/signup/process" modelAttribute="user">
 			    <p>
 		            <form:label class="col-sm-4 col-form-label" path="first_name">First Name:</form:label>
 		            <form:input class="form-control col-sm-6" type="text" path="first_name"/>
@@ -33,19 +31,11 @@
 		        </p>
 		        <p>
 		            <form:label class="col-sm-4 col-form-label" path="email">Email:</form:label>
-		            <form:input class="form-control col-sm-6" type="email" path="email"/>
+		            <form:input class="form-control col-sm-6" type="text" path="email"/>
 		        </p>
-		        <p>
-		            <form:label class="col-sm-4 col-form-label" path="city">City:</form:label>
-		            <form:input class="form-control col-sm-6" type="text" path="city"/>
-		        </p>
-		        <p>
-		            <form:label class="col-sm-2 col-form-label" path="state">State:</form:label>
-		            <form:select path="state">
-	        			<c:forEach items="${states}" var="state">
-	            			<form:option value="${state}">${state}</form:option>
-	        			</c:forEach>
-	        		</form:select>
+		         <p>
+		            <form:label class="col-sm-4 col-form-label" path="username">Username:</form:label>
+		            <form:input class="form-control col-sm-6" type="text" path="username"/>
 		        </p>
 		        <p>
 		            <form:label  class="col-sm-4 col-form-label" path="password">Password:</form:label>
@@ -57,25 +47,7 @@
 		        </p>
 			    <input class="btn btn-outline-success mt-3" type="submit" value="Register"/>
 		    </form:form>
-	    </div>
-	    
-	    <div class="login">
-		    <h1 class="display-4 text-center text-primary">Login</h1>
-		    
-		    <p class="text-danger"><c:out value="${loginError}" /></p>
-		    
-		    <form method="post" action="/login">
-		        <p>
-		            <label class="col-sm-4 col-form-label" for="email">Email</label>
-		            <input class="form-control col-sm-6"  type="text" id="email" name="email"/>
-		        </p>
-		        <p>
-		            <label class="col-sm-4 col-form-label" for="password">Password</label>
-		            <input class="form-control col-sm-6" type="password" id="password" name="password"/>
-		        </p>
-		        <input class="btn btn-outline-primary mt-3" type="submit" value="Login"/>
-		    </form>
-	    </div>
+		</div>
     </div>
 </body>
 </html>

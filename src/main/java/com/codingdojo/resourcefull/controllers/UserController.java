@@ -1,5 +1,7 @@
 package com.codingdojo.resourcefull.controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.codingdojo.resourcefull.models.User;
 import com.codingdojo.resourcefull.services.UserService;
+import com.codingdojo.resourcefull.validator.UserValidator;
 
 @Controller
 public class UserController {
@@ -21,97 +24,69 @@ public class UserController {
 // Attribute
 //--------------------------------------------------------------------------------------------
 	private final UserService userService;
+	private UserValidator userValidator;
 
 	// ----------------------------------------------------------------------------------------
 	// Constructors
 	// ----------------------------------------------------------------------------------------
-	public UserController(UserService userService) {
+	public UserController(UserService userService, UserValidator userValidator) {
 		this.userService = userService;
+		this.userValidator = userValidator;
 	}
-//-------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 //										Routes
-//-------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
-// GET route for READING authentication page
-//--------------------------------------------------------------------------------------------	
-	@RequestMapping("/")
-	public String registerForm(@ModelAttribute("user") User user) {
-		return "authentication.jsp";
+// GET route for READING ADMIN home page 
+//--------------------------------------------------------------------------------------------
+	@RequestMapping("/resourcefull/administrator")
+	public String adminPage(Principal principal, Model model) {
+		String username = principal.getName();
+		model.addAttribute("currentUser", userService.findByUsername(username));
+		return "admin.jsp";
 	}
-
-//--------------------------------------------------------------------------------------------
-/// GET route for READING home page 
-//--------------------------------------------------------------------------------------------
-	@RequestMapping("/home")
-	public String home(HttpSession session, Model model) {
-		Long id = (Long) session.getAttribute("userId");
-		User user = userService.findUserById(id);
-		model.addAttribute("user", user);
-		return "home.jsp";
-	}
-//--------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
 //								REGISTRATION ROUTES
-//--------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+// GET route for READING sign-up page
+//---------------------------------------------------------------------------------------------	
+	@RequestMapping("/resourcefull/signup")
+	public String signupForm(@ModelAttribute("user") User user) {
+		return "signup.jsp";
+	}
 
 //--------------------------------------------------------------------------------------------
-// POST route for CREATING a user
+// POST route for CREATING a user with user credentials
 // --------------------------------------------------------------------------------------------
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session,
-			RedirectAttributes attribute) {
+	@RequestMapping(value = "/signup/process", method = RequestMethod.POST)
+	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, RedirectAttributes attribute) {
+		userValidator.validate(user, result);
 		if (result.hasErrors()) {
-			return "authentication.jsp";
-		} else if (userService.checkUser(user.getEmail())) {
-			attribute.addFlashAttribute("registrationError", "User already exists");
-			return "redirect:/";
-		} else if (!user.getPassword().equals(user.getPasswordConfirmation())) {
-			attribute.addFlashAttribute("registrationError", "Passwords do not match");
-			return "redirect:/";
-		} else {
-			User new_user = userService.registerUser(user);
-			session.setAttribute("loggedIn", user);
-			session.setAttribute("userId", new_user.getId());
-			return "redirect:/home";
+			return "signup.jsp";
 		}
+		userService.saveWithUserRole(user);
+		return "redirect:/resourcefull/login";
 	}
-//--------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
 //									LOGIN ROUTES
-//--------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
 // POST route for logging in a user
 //--------------------------------------------------------------------------------------------
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model,
-			HttpSession session, RedirectAttributes attribute) {
-		if (email.length() < 1) {
-			attribute.addFlashAttribute("loginError", "Must enter an email");
-			return "redirect:/";
-		} else if (password.length() < 1) {
-			attribute.addFlashAttribute("loginError", "Must enter a password");
-			return "redirect:/";
-		} else if (userService.authenticateUser(email, password)) {
-			User user = userService.findByEmail(email);
-			if (user == null) {
-				attribute.addFlashAttribute("loginError", "User does not exist");
-			} else {
-				session.setAttribute("userId", user.getId());
-				session.setAttribute("loggedIn", true);
-				return "redirect:/home";
-			}
-		} else {
-			attribute.addFlashAttribute("loginError", "Invalid Password");
+	@RequestMapping(value = "/login")
+	public String loginUser(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model model) {
+		if (error != null) {
+			model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
 		}
-		return "redirect:/";
-	}
-
-//--------------------------------------------------------------------------------------------
-// GET route for logging out a user 
-//--------------------------------------------------------------------------------------------
-	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/";
+		if (logout != null) {
+			model.addAttribute("logoutMessage", "Logout Successful!");
+		}
+		return "login.jsp";
 	}
 }

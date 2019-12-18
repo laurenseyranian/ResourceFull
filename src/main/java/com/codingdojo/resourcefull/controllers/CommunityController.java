@@ -1,5 +1,7 @@
 package com.codingdojo.resourcefull.controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -28,41 +30,40 @@ public class CommunityController {
 //									Routes
 //--------------------------------------------------------------------------------------------
 	
-	
-
-//--------------------------------------------------------------------------------------------
-// GET route for READING index page 
-//--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull")
-	public String index () {
+	public String index() {
 		return "index.jsp";
 	}
 //--------------------------------------------------------------------------------------------
-// GET route for READING home page 
+// GET route for READING USER home page 
 //--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/home")
-	public String home() {
-		return "home.jsp";
-	}
+	public String home(Principal principal, Model model, HttpSession session) {
+		if(principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+		}
+        return "home.jsp";
+    }
 //--------------------------------------------------------------------------------------------
 // GET route for READING create page 
 //--------------------------------------------------------------------------------------------
-	@RequestMapping("/resourcefull/addcommunity")
-	public String create() {
+	@RequestMapping("/resourcefull/add/neighborhood")
+	public String addNeighborhood() {
 		return "create.jsp";
 	}
 //--------------------------------------------------------------------------------------------
 // GET route for READING details page 
 //--------------------------------------------------------------------------------------------
-	@RequestMapping("/resourcefull/community")
-	public String details() {
+	@RequestMapping("/resourcefull/neighborhood")
+	public String readAllNeighborhoods() {
 		return "details.jsp";
 	}
 //--------------------------------------------------------------------------------------------
 // GET route for READING details page 
 //--------------------------------------------------------------------------------------------
-	@RequestMapping("/resourcefull/editcommunity")
-	public String edit() {
+	@RequestMapping("/resourcefull/edit/neighborhood/{community_id}")
+	public String editOneNeighborhood() {
 		return "edit.jsp";
 	}
 

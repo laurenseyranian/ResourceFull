@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -29,15 +32,19 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Size(min = 2, message = "Enter first name")
+	@Size(min = 2, message = "Last name must be greater than 2 characters.")
 	private String first_name;
 
-	@Size(min = 2, message = "Enter last name")
+	@Size(min = 2, message = "Last name must be greater than 2 characters.")
 	private String last_name;
+	
+	@Size(min = 5, message = "Username must be greater than 5 characters.")
+	private String username;
+	
 	@Email
 	private String email;
 
-	@Size(min = 5, message = "Password must be at least 5 characters")
+	@Size(min = 5, message = "Password must be greater than 5 characters.")
 	private String password;
 
 	@Transient
@@ -55,11 +62,12 @@ public class User {
 	public User() {
 	}
 
-	public User(Long id, String first_name, String last_name, String email, String city, String state, String password,
+	public User(Long id, String first_name, String last_name, String username, String email, String city, String state, String password,
 			String passwordConfirmation, Date createdAt, Date updatedAt) {
 		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
+		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.passwordConfirmation = passwordConfirmation;
@@ -71,7 +79,13 @@ public class User {
 //----------------------------------------------------------------
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Message> messages;
-
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "users_roles", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 //----------------------------------------------------------------
 //	Getters and Setters
 //----------------------------------------------------------------
@@ -108,7 +122,14 @@ public class User {
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -116,7 +137,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -148,5 +169,19 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+	public List<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
 }
