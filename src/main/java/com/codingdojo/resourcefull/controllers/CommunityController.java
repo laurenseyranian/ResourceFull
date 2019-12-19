@@ -136,6 +136,23 @@ public class CommunityController {
 	public UserService getUserService() {
 		return userService;
 	}
+	
+//--------------------------------------------------------------------------------------------
+//	Get Route for the About page 
+//--------------------------------------------------------------------------------------------
+
+@RequestMapping("/resourcefull/about")
+public String about() {
+return "about.jsp";
+}
+//--------------------------------------------------------------------------------------------
+//Get Route for the Blog page 
+//--------------------------------------------------------------------------------------------
+
+@RequestMapping("/resourcefull/blog")
+public String blog() {
+return "blog.jsp";
+}
 
 }
 
