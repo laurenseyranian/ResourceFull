@@ -35,32 +35,36 @@ body {
 .movenavbar {
 	margin-left: 20%
 }
-.add {
+.welcome {
 	margin-top: 50px;
 	margin-bottom: 10px;
-	margin-left: 10%;
 	font-size: 30px;
 	font-family: "Work Sans", sans-serif;
 }
-.col{
-	display: inline-block;
-	vertical-align: top;
-}
-.addBox {
-	width: 100%;
-	height: 950px;
-	padding: 15px;
-	border: 2px solid black;
-	border-radius: 3px;
-	font-size: 30px;
+.contact {
+	margin-bottom: 50px;
+	font-size: 20px;
 	font-family: "Work Sans", sans-serif;
 }
 .map {
-	width: 100%;
-	height: 450px;
+	width: 97%;
+	height: 500px;
 }
-.quote {
-	width: 100%;
-	height: 450px;
-	margin-top: 46px;
+.tableText {
+	font-family: "Work Sans", sans-serif;
+}
+.btn-outline-secondary{
+	margin-left: 40%;
+}
+.messageBox {
+	width: 97.5%;
+	height: 300px;
+	border: 2px solid black;
+	border-radius: 3px;
+	padding: 15px;
+	overflow-y: scroll;
+}
+.messageCenter {
+	font-family: "Work Sans", sans-serif;
+	font-size: 30px;
 }
