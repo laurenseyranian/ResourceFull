@@ -3,10 +3,11 @@ package com.codingdojo.resourcefull.services;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.resourcefull.models.User;
+import com.codingdojo.resourcefull.repositories.RoleRepository;
 import com.codingdojo.resourcefull.repositories.UserRepository;
 
 @Service
@@ -14,13 +15,16 @@ public class UserService {
 //--------------------------------------------------------------------------------------------
 // Attributes 
 //--------------------------------------------------------------------------------------------
-
     private final UserRepository userRepository;
+    private RoleRepository roleRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     //----------------------------------------------------------------------------------------
     // Constructors 
     //----------------------------------------------------------------------------------------
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 //--------------------------------------------------------------------------------------------
 // REGISTER user AND HASH their password
@@ -39,6 +43,12 @@ public class UserService {
 //--------------------------------------------------------------------------------------------
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+//--------------------------------------------------------------------------------------------
+// FIND user by USERNAME
+//--------------------------------------------------------------------------------------------
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 //--------------------------------------------------------------------------------------------
 // FIND user by ID
@@ -70,16 +80,33 @@ public class UserService {
             }
         }
     }
+////--------------------------------------------------------------------------------------------
+//// CHECK is user exits
+////--------------------------------------------------------------------------------------------
+//    public boolean checkUser(String email) {
+//        User user = userRepository.findByEmail(email);
+//        if(user == null) {
+//            return false;
+//        }
+//        else {
+//        	return true;
+//        }
+//    }
 //--------------------------------------------------------------------------------------------
-// CHECK is user exits
-//--------------------------------------------------------------------------------------------
-    public boolean checkUser(String email) {
-        User user = userRepository.findByEmail(email);
-        if(user == null) {
-            return false;
-        }
-        else {
-        	return true;
-        }
+// ASSIGN account as an USER
+//--------------------------------------------------------------------------------------------   
+    public void saveWithUserRole(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setRoles(roleRepository.findByName("ROLE_USER"));
+        userRepository.save(user);
     }
+     
+//--------------------------------------------------------------------------------------------
+// ASSIGNS account as an ADMINISTRATOR
+//-------------------------------------------------------------------------------------------- 
+    public void saveUserWithAdminRole(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
+        userRepository.save(user);
+    }    
 }
