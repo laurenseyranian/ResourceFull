@@ -71,7 +71,7 @@
 			
 						<p>
 							<form:label path="liaisoncontactnumber" class="lead col-form-label">Contact Phone: </form:label>
-							<form:input path="liaisoncontactnumber" type="number" class="form-control col-11" />
+							<form:input path="liaisoncontactnumber" type="text" class="form-control col-11" />
 						</p>
 			
 						<input class="btn btn-outline-secondary mt-3" type="submit"
