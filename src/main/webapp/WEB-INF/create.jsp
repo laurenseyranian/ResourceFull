@@ -12,7 +12,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 	<title>ResourceFull</title>
 
-
 <title>ResourceFull</title>
 </head>
 <body>
