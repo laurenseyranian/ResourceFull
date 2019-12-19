@@ -7,39 +7,42 @@
 <head>
     <meta charset="UTF-8">
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
-	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>	
+    
     <title>Resourcefull - Login</title>
     
 </head>
 <body>
-	<div class="container">
+	<div class="topOfPage">
+		<img src="/img/logo.svg" alt="error" class="logo">
+		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
+	</div>
 	
-	    <div class="login">
-		    <h1 class="display-4 text-center text-primary">Login</h1>
-		    
-		    <c:if test="${logoutMessage != null}">
-        <c:out value="${logoutMessage}"></c:out>
-    </c:if>
-    <h1>Login</h1>
-    <c:if test="${errorMessage != null}">
-        <c:out value="${errorMessage}"></c:out>
-    </c:if>
+	<p class="text-center login">Login</p>
+	
+	<div class="loginBox">
+			<c:if test="${logoutMessage != null}">
+        		<c:out value="${logoutMessage}"></c:out>
+    		</c:if>
+    		<c:if test="${errorMessage != null}">
+        		<c:out value="${errorMessage}"></c:out>
+    		</c:if>
    			 
-		    <form method="post" action="/login">
+		    <form method="post" action="/resourcefull/login">
 		        <p>
 		            <label class="col-sm-4 col-form-label" for="username">Username:</label>
 		            <input class="form-control col-sm-6"  type="text" id="username" name="username"/>
 		        </p>
 		        <p>
-		            <label class="col-sm-4 col-form-label" for="password">Password"</label>
+		            <label class="col-sm-4 col-form-label" for="password">Password:</label>
 		            <input class="form-control col-sm-6" type="password" id="password" name="password"/>
 		        </p>
 		         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		        <input class="btn btn-outline-primary mt-3" type="submit" value="Login"/>
+		        <input class="btn btn-outline-secondary mt-3 loginButton" type="submit" value="Login"/>
 		    </form>
 		    
 	    </div>
-    </div>
 </body>
 </html>

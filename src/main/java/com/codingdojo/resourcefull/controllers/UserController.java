@@ -68,7 +68,7 @@ public class UserController {
 			return "signup.jsp";
 		}
 		userService.saveWithUserRole(user);
-		return "redirect:/login";
+		return "redirect:/resourcefull/login";
 	}
 
 //---------------------------------------------------------------------------------------------
@@ -76,9 +76,9 @@ public class UserController {
 //---------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
-// POST route for logging in a user
+// POST route for logging in a user and logging out a user
 //--------------------------------------------------------------------------------------------
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/resourcefull/login")
 	public String loginUser(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model) {
 		if (error != null) {

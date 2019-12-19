@@ -14,11 +14,15 @@
     
 </head>
 <body>
-	<div class="container">
-		<div class="register">
-	    	<h1 class="display-4 text-center text-success">Register</h1>
-	    	    	
-		    <p class="text-danger"><form:errors path="user.*"/></p>
+	<div class="topOfPage">
+		<img src="/img/logo.svg" alt="error" class="logo">
+		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
+	</div>
+	<div class="bodyOfPage">
+		<div class="registerBox">
+		    <p><form:errors path="user.*"/></p>
+		    
+		    <p class="signup">Sign-Up</p>
 		    
 		    <form:form method="POST" action="/signup/process" modelAttribute="user">
 			    <p>
@@ -45,9 +49,10 @@
 		            <form:label class="col-sm-6 col-form-label" path="passwordConfirmation">Password Confirmation:</form:label>
 		            <form:password class="form-control col-sm-6" path="passwordConfirmation"/>
 		        </p>
-			    <input class="btn btn-outline-success mt-3" type="submit" value="Register"/>
+			    <input class="btn btn-outline-secondary mt-3 signupButton" type="submit" value="Sign-up"/>
 		    </form:form>
 		</div>
-    </div>
+	</div>
+	
 </body>
 </html>

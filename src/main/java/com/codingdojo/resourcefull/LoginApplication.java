@@ -71,17 +71,16 @@ public class LoginApplication extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/static/**", "/resourcefull", "/resourcefull/signup", "/signup/process", "/login/process").permitAll()
-				.antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated().and().formLogin()
-				.loginPage("/login").defaultSuccessUrl("/resourcefull/home").permitAll().and().logout().logoutSuccessUrl("/resourcefull").permitAll()
+		http.authorizeRequests().antMatchers("/static/**","/css/**","/img/**", "/resourcefull", "/login", "/resourcefull/signup", "/signup/process", "/login/process").permitAll()
+				.antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated().and().formLogin().loginProcessingUrl("/resourcefull/login")
+				.loginPage("/resourcefull/login").defaultSuccessUrl("/resourcefull/home").permitAll().and().logout().logoutSuccessUrl("/resourcefull").permitAll()
 				.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 				.and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);;
 	}
 
-	// --------------------------------------------------------------------------------------------
-	// CONFIGURES Spring Security to use custom implementation of the
-	// UserDetailsService with Bcrypt.
-	// --------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------
+// CONFIGURES Spring Security to use custom implementation of the UserDetailsService with Bcrypt.
+// --------------------------------------------------------------------------------------------
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
