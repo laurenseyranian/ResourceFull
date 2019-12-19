@@ -27,7 +27,7 @@
 	</div>
 	
 	<p class="welcome text-center"> Hey <c:out value="${currentUser.first_name}"></c:out> <c:out value="${currentUser.last_name}"></c:out> take a look at your <c:out value="${community.name}"/> Neighbor's wishlist!</p>
-	<p class="contact text-center"> Neighbor's Contact Information: <c:out value="${community.liaisoncontactname}" /> (<c:out value="${community.liaisoncontactnumber}" />)
+	<p class="contact text-center"> Neighbor's Contact Information: <c:out value="${community.liaisoncontactname}" /> <c:out value="${community.liaisoncontactnumber}" />
 		</p>
 	<div class="middleOfPage row">
 		<div class="col-6">
