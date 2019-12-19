@@ -2,6 +2,7 @@ package com.codingdojo.resourcefull.controllers;
 
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.codingdojo.resourcefull.models.Community;
 import com.codingdojo.resourcefull.services.CommunityService;
 import com.codingdojo.resourcefull.services.UserService;
+
 
 @Controller
 public class CommunityController {
@@ -53,7 +55,7 @@ public class CommunityController {
 		return "index.jsp";
 	}
 //--------------------------------------------------------------------------------------------
-// GET route for READING USER home page 
+// GET route for rendering home page 
 //--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/home")
 	public String home(Principal principal, Model model, HttpSession session) {
@@ -68,24 +70,25 @@ public class CommunityController {
 //--------------------------------------------------------------------------------------------
 // GET route for rendering create page 
 //--------------------------------------------------------------------------------------------
-
 	@RequestMapping("/resourcefull/addcommunity")
 	public String create(@ModelAttribute("community") Community community, Model model) {
 		model.addAttribute("names", names);
 		return "create.jsp";
 	}
+	
 //--------------------------------------------------------------------------------------------
 // POST route for CREATING a community 
 //--------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/community/process", method = RequestMethod.POST)
-	public String create(@Valid @ModelAttribute("community") Community createCommunity, BindingResult result) {
+	public String create(@Valid @ModelAttribute("community") Community community, BindingResult result) {
 		if (result.hasErrors()) {
 			return "/create.jsp";
 		} else {
-			communityService.createCommunity(createCommunity);
+			communityService.createOrUpdateCommunity(community);
 			return "redirect:/resourcefull/home";
 		}
 	}
+
 	
 //--------------------------------------------------------------------------------------------
 // GET route for READING details page 

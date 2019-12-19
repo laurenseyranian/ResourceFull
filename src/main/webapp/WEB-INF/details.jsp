@@ -6,11 +6,16 @@
 <html>
 <head>
 
-	<meta charset="UTF-8">
-	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
-	<title>ResourceFull</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap"
+	rel="stylesheet">
+<title>ResourceFull</title>
 
 
 </head>
@@ -18,39 +23,67 @@
 	<div class="container">
 		<p>
 			Your
-			<c:out value="${neighborhood.name}" />
+			<c:out value="${community.name}" />
 			Neighbors
 		</p>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Resource</th>
+					<th scope="col">Weekly Resource Need</th>
 					<th scope="col">Date Last Filled</th>
-					<th scope="col">Fill</th>
+					<th scope="col">Take Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row"><c:out value="${commuity.water}"/> gal of water</th>
+					<th scope="row"><c:out value="${community.water}" /> gal of
+						water</th>
+					<!-- add for loop -->
 					<td>add date when button clicked</td>
-					<td>add fill button</td>
+					<td><form action="/resourcefull/neighborhood/${community.id}"
+							method="post">
+							<input type="hidden" name="resource_type" value="water" />
+							<button type="submit">Fill Water</button>
+						</form></td>
 				</tr>
 				<tr>
-					<th scope="row"><c:out value="${commuity.water}"/> lbs food</th>
+					<th scope="row"><c:out value="${community.food}" /> lbs food</th>
+					<!-- add for loop -->
 					<td>add date when button clicked</td>
-					<td>add fill button</td>
+					<td>
+						<form action="/resourcefull/neighborhood/${community.id}"
+							method="post">
+							<input type="hidden" name="resource_type" value="food" />
+							<button type="submit">Fill Food</button>
+						</form>
+					</td>
 				</tr>
 				<tr>
-					<th scope="row"><c:out value="${commuity.hygienekits}"/> hygiene kits</th>
+					<th scope="row"><c:out value="${community.hygienekits}" />
+						hygiene kits</th>
 					<td>add date when button clicked</td>
-					<td>add fill button</td>
+					<td>
+						<form action="/resourcefull/neighborhood/${community.id}"
+							method="post">
+							<input type="hidden" name="resource_type" value="hygiene" />
+							<button type="submit">Fill Hygiene</button>
+						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
+
+		<p>
+			Contact Information:
+			<c:out value="${community.liaisoncontactname}" />
+			(
+			<c:out value="${community.liaisoncontactnumber}" />
+			)
+		</p>
 		
-		<p>Contact Information: <c:out value="${community.emergencycontactname}"/> (<c:out value="${community.emergencycontactnumber}"/>)</p>
-		
-	<%-- 	<div class="messageBox">
+		<a class="btn btn-outline-primary" href="/resourcefull/home">Home</a>
+
+		<%-- 	<div class="messageBox">
 			<h1 class="display-4 text-success">Message Wall</h1>    
 				<div class="box">
 					<c:forEach var="message" items="${event.messages}">
@@ -77,26 +110,6 @@
 
 		<!-- end of container -->
 
-
-
-
-	
-		<form action="/resourcefull/neighborhood/${community.id}" method="post" >
-			<input type="hidden" name="resource_type" value="food"/>
-			<button type="submit" >Fill Food</button>
-		</form>
-		<form action="/resourcefull/neighborhood/${community.id}" method="post" >
-			<input type="hidden" name="resource_type" value="water"/>
-			<button type="submit" >Fill Water</button>
-		</form>
-		<form action="/resourcefull/neighborhood/${community.id}" method="post" >
-			<input type="hidden" name="resource_type" value="hygiene"/>
-			<button type="submit" >Fill Hygiene</button>
-		</form>
-	
-	
-	
-<!-- end of container -->
 	</div>
 
 </body>

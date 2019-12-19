@@ -24,7 +24,7 @@ public class CommunityService {
 //  -----------------------------------------------------------------------------------------
 //  CREATE community
 //  -----------------------------------------------------------------------------------------
-	public Community createCommunity(Community community) {
+	public Community createOrUpdateCommunity(Community community) {
 		return communityRepository.save(community);
 	}
 

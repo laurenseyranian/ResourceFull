@@ -68,7 +68,7 @@ public class UserController {
 			return "signup.jsp";
 		}
 		userService.saveWithUserRole(user);
-		return "redirect:/resourcefull/login";
+		return "redirect:/login";
 	}
 
 //---------------------------------------------------------------------------------------------
