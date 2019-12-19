@@ -22,7 +22,12 @@
 		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
+		<div class="navbar">
+			<form id="logoutForm" method="POST" action="/logout">
+        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        		<input class="text-light" type="submit" value="Logout" />
+    		</form>
+    	</div>
 	</div>
 	
 	<p class="text-center welcome">Welcome <c:out value="${currentUser.first_name}"></c:out> <c:out value="${currentUser.last_name}"></c:out>!</p>

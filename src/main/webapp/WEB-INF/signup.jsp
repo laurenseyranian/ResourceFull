@@ -18,10 +18,11 @@
 		<img src="/img/logo.svg" alt="error" class="logo">
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 	</div>
+	<div class="bodyOfPage">
 		<div class="registerBox">
-		    <p class="text-danger"><form:errors path="user.*"/></p>
+		    <p><form:errors path="user.*"/></p>
 		    
-		    <p class="text-center title">Sign-Up</p>
+		    <p class="signup">Sign-Up</p>
 		    
 		    <form:form method="POST" action="/signup/process" modelAttribute="user">
 			    <p>
@@ -51,5 +52,7 @@
 			    <input class="btn btn-outline-secondary mt-3 signupButton" type="submit" value="Sign-up"/>
 		    </form:form>
 		</div>
+	</div>
+	
 </body>
 </html>

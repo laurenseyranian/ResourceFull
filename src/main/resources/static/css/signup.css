@@ -1,6 +1,5 @@
 body {
 	font-family: 'Baskervville', serif;
-	background-color: #5DCC14;
 }
 .topOfPage {
 	width: 100%;
@@ -13,20 +12,23 @@ body {
 	margin-left: 40%;
 	margin-top: 80px;
 }
-.title {
+.title{
 	font-size: 50px;
+	font-weight: bolder;
+	margin-top: 100px;
+	color: white;
+}
+.signup{
+	font-size: 30px;
+	margin-left: 20%;
+	margin-top: 50px;
+	font-family: "Work Sans", sans-serif;
 }
 .registerBox {
-	width: 50%;
-	margin-top: 50px;
-	margin-left: 25%;
-	height: 900px;
-	padding: 15px;
-	border-radius: 3px;
-	font-size: 30px;
+	margin-left: 35%;
 	font-family: "Work Sans", sans-serif;
 	background-color: white;
 }
 .signupButton{
-	margin-left: 35%;
+	margin-left: 20%;
 }

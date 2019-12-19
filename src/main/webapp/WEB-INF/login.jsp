@@ -20,8 +20,9 @@
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 	</div>
 	
+	<p class="text-center login">Login</p>
+	
 	<div class="loginBox">
-		<p class="text-center title">Login</p>
 			<c:if test="${logoutMessage != null}">
         		<c:out value="${logoutMessage}"></c:out>
     		</c:if>
@@ -29,13 +30,13 @@
         		<c:out value="${errorMessage}"></c:out>
     		</c:if>
    			 
-		    <form method="post" action="/login">
+		    <form method="post" action="/resourcefull/login">
 		        <p>
 		            <label class="col-sm-4 col-form-label" for="username">Username:</label>
 		            <input class="form-control col-sm-6"  type="text" id="username" name="username"/>
 		        </p>
 		        <p>
-		            <label class="col-sm-4 col-form-label" for="password">Password"</label>
+		            <label class="col-sm-4 col-form-label" for="password">Password:</label>
 		            <input class="form-control col-sm-6" type="password" id="password" name="password"/>
 		        </p>
 		         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
