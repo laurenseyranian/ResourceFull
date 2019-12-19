@@ -31,6 +31,7 @@
         			<input type="submit" value="Logout!" />
     			</form>
 			</nav>
+			<a class="btn btn-outline-primary" href="/resourcefull/addcommunity">Create Community</a>
 	</div>
 	
 	<div class="neighborhoods">
@@ -41,17 +42,17 @@
 						<tr>
 							<th scope="col" class="lead">Neighborhood</th>
 							<th scope="col" class="lead"># of Neighbors</th>
+							<th scope="col" class="lead"># of Pets</th>
 						</tr>
 					</thead>
 	
 					<tbody>
-						<c:forEach items="${neighborhoods}" var="neighborhood">
+						<c:forEach items="${communities}" var="community">
 							<tr>
-								<td class="lead"><a href="resourcefull/neighborhood/${name.id}"><c:out value="${neighborhood.name}"/></a></td>
-								<td class="lead"><c:out value="${neighborhood.residents}"/></td>
-								<td class="lead"><c:out value="${event.city}"/></td>
-								<td class="lead"><c:out value="${event.host.first_name}"/></td>
-								<td>
+								<td class="lead"><a href="resourcefull/neighborhood/${community.id}"><c:out value="${community.name}"/></a></td>
+								<td class="lead"><c:out value="${community.residents}"/></td>
+								<td class="lead"><c:out value="${community.pets}"/></td>
+								<%-- <td class="lead"><c:out value="${community.hygienekits_FilledAt}"/></td> --%> 
 							</tr>
 						</c:forEach>
 					</tbody>
