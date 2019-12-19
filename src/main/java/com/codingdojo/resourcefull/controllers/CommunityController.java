@@ -46,10 +46,10 @@ public class CommunityController {
 	public String[] getNames() {
 		return names;
 	}	
+	
 //--------------------------------------------------------------------------------------------
 //									Routes
 //--------------------------------------------------------------------------------------------
-	
 	@RequestMapping("/resourcefull")
 	public String index() {
 		return "index.jsp";
