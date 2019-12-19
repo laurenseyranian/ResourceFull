@@ -13,11 +13,6 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script>var logout = function() {$.post("/logout", function() {$("#user").html('');$(".unauthenticated").show();$(".authenticated").hide();})return true;}</script>
-<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
-<script>$.ajaxSetup({beforeSend : function(xhr, settings) {if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {if (!(/^http:.*/.test(settings.url) || /^https:.*/ .test(settings.url))) { xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get('XSRF-TOKEN'));}}}});</script>
 
 <title>Resourcefull - Logged In Home Page</title>
 </head>
