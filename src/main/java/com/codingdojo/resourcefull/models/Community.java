@@ -31,15 +31,17 @@ public class Community {
 	@Size (min=1, message="Must select name from the list")
 	private String name;
 	
+	private String location;
+	
 	private int residents; 
 	
 	private int pets;
 	
-	private String street;
-	
-	private String city;
-	
-	private String state;
+//	private String street;
+//	
+//	private String city;
+//	
+//	private String state;
 	
 	private double lat;
 	
@@ -80,35 +82,35 @@ public class Community {
 	public Community() {
 		
 	}
-	
-	public Community(Long id, @Size(min = 1, message = "Must select name from the list") String name, int residents,
-		int pets, String street, String city, String state, double lat, double longitude, List<Date> food_filledAt,
-		List<Date> water_filledAt, List<Date> hygienekits_filledAt, String liaisoncontactname,
-		String liaisoncontactnumber, Date createdAt, Date updatedAt, List<Message> messages) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.residents = residents;
-	this.pets = pets;
-	this.street = street;
-	this.city = city;
-	this.state = state;
-	this.lat = lat;
-	this.longitude = longitude;
-	this.food_filledAt = food_filledAt;
-	this.water_filledAt = water_filledAt;
-	this.hygienekits_filledAt = hygienekits_filledAt;
-	this.liaisoncontactname = liaisoncontactname;
-	this.liaisoncontactnumber = liaisoncontactnumber;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
-	this.messages = messages;
-}
 
+	public Community(Long id, int residents, int pets, int water, int hygienekits,
+			String liaisoncontactname, String liaisoncontactnumber, Date createdAt, Date updatedAt, String location, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.residents = residents;
+		this.pets = pets;
+		this.location = location;
+//		this.street = street;
+//		this.city = city;
+//		this.state = state;
+		this.setLiaisoncontactname(liaisoncontactname);
+		this.setLiaisoncontactnumber(liaisoncontactnumber);
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
 //----------------------------------------------------------------
 //	Getters and Setters
 //----------------------------------------------------------------
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -145,24 +147,24 @@ public class Community {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
+//	public String getStreet() {
+//		return street;
+//	}
+//	public void setStreet(String street) {
+//		this.street = street;
+//	}
+//	public String getCity() {
+//		return city;
+//	}
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//	public String getState() {
+//		return state;
+//	}
+//	public void setState(String state) {
+//		this.state = state;
+//	}
 	public double getLongitude() {
 		return longitude;
 	}

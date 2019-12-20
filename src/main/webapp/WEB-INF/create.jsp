@@ -46,7 +46,7 @@
 								</c:forEach>
 							</form:select>
 						</p>
-						<p>
+<%-- 						<p>
 							<form:label path="street" class="lead col-form-label">Street: </form:label>
 							<form:input path="street" type="text" class="form-control col-11" />
 						</p>
@@ -58,8 +58,13 @@
 						<p>
 							<form:label path="state" class="lead col-form-label">State: </form:label>
 							<form:input path="state" type="text" class="form-control col-11" />
-						</p>
+						</p> --%>
 			
+						<p>
+							<form:label path="location" class="lead col-form-label">Location (nearest intersection, city, state): </form:label>
+							<form:input path="location" type="text" class="form-control col-11" />
+						</p>
+						
 						<p>
 							<form:label path="residents" class="lead col-form-label"># of Residents: </form:label>
 							<form:input path="residents" type="number" class="form-control col-11" />

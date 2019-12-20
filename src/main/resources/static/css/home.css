@@ -41,8 +41,8 @@ body{
 	font-size: 30px;
 	font-family: "Work Sans", sans-serif;
 }
-.map {
-	width: 97%;
+#map {
+    width: 97%;
 	height: 500px;
 }
 a {
