@@ -45,20 +45,28 @@ public class Message {
     @JoinColumn(name = "user_id")     
     private User user;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="community_id")
+    private Community community;
+    
 //----------------------------------------------------------------
 //	Constructors
 //----------------------------------------------------------------
 	public Message() {
 	}
 
-	public Message (Long id, String message, Date createdAt, Date updatedAt, User user) {
-		this.id = id;
-		this.message = message;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.user = user;
-	}
-	
+	public Message(Long id, @Size(min = 1, message = "Message must be longer than 2 characters") String message, Date createdAt, Date updatedAt, User user, Community community) {
+	super();
+	this.id = id;
+	this.message = message;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
+	this.user = user;
+	this.community = community;
+}
+
+
+
 //----------------------------------------------------------------
 //	Getters and Setters
 //----------------------------------------------------------------
@@ -111,4 +119,13 @@ public class Message {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+
+	public Community getCommunity() {
+		return community;
+	}
+
+	public void setCommunity(Community community) {
+		this.community = community;
+	}
+	
 }

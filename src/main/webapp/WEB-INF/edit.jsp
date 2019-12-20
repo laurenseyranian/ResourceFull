@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/edit.css">
 	<link href="https://fonts.googleapis.com/css?family=Baskervville|Roboto+Mono&display=swap" rel="stylesheet">
 
-	<title>ResourceFull - Add</title>
+	<title>ResourceFull - Edit</title>
 </head>
 
 <body>
@@ -19,11 +19,18 @@
 		<img src="/img/logo.svg" alt="error" class="logo">
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
-		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
+		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
+		<div class="navbar">
+			<form id="logoutForm" method="POST" action="/logout">
+        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        		<input class="btn btn-link text-light" type="submit" value="LOGOUT" />
+    		</form>
+    	</div>
 	</div>
 	
 	<p class="edit">Edit <c:out value="${community.name}"/> Neighborhood</p>
@@ -31,29 +38,24 @@
 	<div class="row">
 		<div class="col-5 ml-3">
 			<div class="editBox">
-				<form:form method="POST" action="/resourcefull/{community.id}/update" modelAttribute="community">
+				<form:form method="POST" action="/neighborhood/${community.id}/update" modelAttribute="community">
+				<form:hidden path="creator" value="${user.id}"/>
+				<input type="hidden" name="_method" value="put">
 					<p>
 						<form:label path="name" class=" col-form-label">Neighborhood: </form:label>
-						<form:select path="name">
-							<c:forEach items="${names}" var="name">
-								<form:option value="${name}">${name}</form:option>
-							</c:forEach>
-						</form:select>
+							<form:select path="name">
+								<c:forEach items="${names}" var="name">
+									<form:option value="${name}">${name}</form:option>
+								</c:forEach>
+							</form:select>
+						</p>
+					<p>
+							
+					<p>
+						<form:label path="location" class="lead col-form-label">Location (nearest intersection, city, state): </form:label>
+						<form:input path="location" type="text" class="form-control col-11" />
 					</p>
-					<p>
-						<form:label path="street" class="lead col-form-label">Street: </form:label>
-						<form:input path="street" type="text" class="form-control col-11" />
-					</p>
-		
-					<p>
-						<form:label path="city" class="lead col-form-label">City:</form:label>
-						<form:input path="city" type="text" class="form-control col-11" />
-					<p>
-					<p>
-						<form:label path="state" class="lead col-form-label">State: </form:label>
-						<form:input path="state" type="text" class="form-control col-11" />
-					</p>
-		
+					
 					<p>
 						<form:label path="residents" class="lead col-form-label"># of Residents: </form:label>
 						<form:input path="residents" type="number" class="form-control col-11" />
@@ -71,18 +73,16 @@
 		
 					<p>
 						<form:label path="liaisoncontactnumber" class="lead col-form-label">Contact Phone: </form:label>
-						<form:input path="liaisoncontactnumber" type="number" class="form-control col-11" />
+						<form:input path="liaisoncontactnumber" type="text" class="form-control col-11" />
 					</p>
 		
 					<input class="btn btn-outline-secondary mt-3" type="submit"
 						value="Submit" />
-					<a class="btn btn-outline-danger mt-3" href="/events">Cancel</a>
+					<a class="btn btn-outline-danger mt-3" href="/resourcefull/home">Cancel</a>
 				</form:form>
 			</div>
 		</div>
-		
 		<div class="col-5 mapApi">
-			<img src="/img/map.png" alt="error" class="map">
 			<img src="/img/quote.jpg" alt="error" class="quote">
 		</div>
 <!-- end of row -->

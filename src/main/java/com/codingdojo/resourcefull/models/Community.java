@@ -1,17 +1,26 @@
 package com.codingdojo.resourcefull.models;
+
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name="community")
@@ -25,33 +34,35 @@ public class Community {
 	private Long id;
 	
 	//to be input from user
+	@Expose
 	@Size (min=1, message="Must select name from the list")
 	private String name;
+	
+	@Expose
+	private String location;
 	
 	private int residents; 
 	
 	private int pets;
 	
-	private String street;
-	
-	private String city;
-	
-	private String state;
-	
+
 	private double lat;
 	
 	private double longitude;
 	
 	@ElementCollection
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@OrderBy("food_filled_at desc")
 	private List<Date> food_filledAt;
 	
 	@ElementCollection
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@OrderBy("water_filled_at desc")
 	private List<Date> water_filledAt;
 	
 	@ElementCollection
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@OrderBy("hygienekits_filled_at desc")
 	private List<Date> hygienekits_filledAt;
 	
 	private String liaisoncontactname;
@@ -68,24 +79,28 @@ public class Community {
 //----------------------------------------------------------------
 //	Relationships
 //----------------------------------------------------------------
+	@OneToMany(mappedBy="community", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OrderBy("createdAt desc")
+	private List<Message> messages;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="creator_id")
+	private User creator;
 //----------------------------------------------------------------
 //	Constructors
 //----------------------------------------------------------------
 	public Community() {
 		
 	}
-	
+
 	public Community(Long id, int residents, int pets, int water, int hygienekits,
-			String liaisoncontactname, String liaisoncontactnumber, Date createdAt, Date updatedAt, String street, String city, String state, String name) {
+			String liaisoncontactname, String liaisoncontactnumber, Date createdAt, Date updatedAt, String location, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.residents = residents;
 		this.pets = pets;
-		this.street = street;
-		this.city = city;
-		this.state = state;
+		this.location = location;
 		this.setLiaisoncontactname(liaisoncontactname);
 		this.setLiaisoncontactnumber(liaisoncontactnumber);
 		this.createdAt = createdAt;
@@ -95,6 +110,14 @@ public class Community {
 //	Getters and Setters
 //----------------------------------------------------------------
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -130,24 +153,6 @@ public class Community {
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
 	}
 	public double getLongitude() {
 		return longitude;
@@ -205,6 +210,22 @@ public class Community {
 
 	public void setHygienekits_filledAt(List<Date> hygienekits_filledAt) {
 		this.hygienekits_filledAt = hygienekits_filledAt;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	public User getCreator() {
+		return creator;
+	}
+
+	public void setCreator(User creator) {
+		this.creator = creator;
 	}
 	
 }
