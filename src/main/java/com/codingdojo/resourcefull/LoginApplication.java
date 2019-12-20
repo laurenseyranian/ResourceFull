@@ -71,7 +71,7 @@ public class LoginApplication extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/static/**","/css/**","/img/**", "/resourcefull", "/login", "/resourcefull/signup", "/signup/process", "/login/process","/resourcefull/learnmore", "/resourcefull/blog").permitAll()
+		http.authorizeRequests().antMatchers("/static/**","/css/**","/js/**","/img/**", "/resourcefull", "/login", "/resourcefull/signup", "/signup/process", "/login/process","/resourcefull/learnmore", "/resourcefull/blog").permitAll()
 				.antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated().and().formLogin().loginProcessingUrl("/resourcefull/login")
 				.loginPage("/resourcefull/login").defaultSuccessUrl("/resourcefull/home").permitAll().and().logout().logoutSuccessUrl("/resourcefull").permitAll()
 				.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())

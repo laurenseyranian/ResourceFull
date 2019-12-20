@@ -77,6 +77,9 @@ public class User {
 //----------------------------------------------------------------
 //	Relationships
 //----------------------------------------------------------------
+	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
+	private List<Community> communities;
+	
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Message> messages;
 	
@@ -183,5 +186,13 @@ public class User {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
+	public List<Community> getCommunities() {
+		return communities;
+	}
+
+	public void setCommunities(List<Community> communities) {
+		this.communities = communities;
+	}
 
 }

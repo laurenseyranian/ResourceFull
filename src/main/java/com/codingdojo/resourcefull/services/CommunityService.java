@@ -46,12 +46,26 @@ public class CommunityService {
 		return messageRepository.save(createMessage);
 	}
 //  -----------------------------------------------------------------------------------------
-//  UPDATE a community
-//  -----------------------------------------------------------------------------------------
-	public Community updateCommunity(Community community) {
-		return this.communityRepository.save(community);
+//  CREATE fill WATER button
+//  -----------------------------------------------------------------------------------------	
+	public void filledWater(Community comm) {
+		comm.getWater_filledAt().add(new Date());
+		communityRepository.save(comm);
 	}
-	
+//  -----------------------------------------------------------------------------------------
+//  CREATE fill FOOD button
+//  -----------------------------------------------------------------------------------------		
+	public void filledFood(Community comm) {
+		comm.getFood_filledAt().add(new Date());
+		communityRepository.save(comm);
+	}
+//  -----------------------------------------------------------------------------------------
+//  CREATE fill KIT button
+//  -----------------------------------------------------------------------------------------	
+	public void filledHygiene(Community comm) {
+		comm.getHygienekits_filledAt().add(new Date());
+		communityRepository.save(comm);
+	}
 //  -----------------------------------------------------------------------------------------
 //  READ ALL communities by ID
 //  -----------------------------------------------------------------------------------------
@@ -64,21 +78,6 @@ public class CommunityService {
 //  -----------------------------------------------------------------------------------------
 	public void deleteCommunity(Long community_id) {
 		communityRepository.deleteById(community_id);
-	}
-	
-	public void filledWater(Community comm) {
-		comm.getWater_filledAt().add(new Date());
-		communityRepository.save(comm);
-	}
-	
-	public void filledFood(Community comm) {
-		comm.getFood_filledAt().add(new Date());
-		communityRepository.save(comm);
-	}
-	
-	public void filledHygiene(Community comm) {
-		comm.getHygienekits_filledAt().add(new Date());
-		communityRepository.save(comm);
 	}
 	
 //  -----------------------------------------------------------------------------------------
@@ -103,7 +102,22 @@ public class CommunityService {
 //  FIND a neighborhood by ID
 //  -----------------------------------------------------------------------------------------
 	public Community findCommunityById(Long community_id) {
-		return communityRepository.findCommunityById(community_id);
+		Community community = communityRepository.findCommunityById(community_id);
+		List<Date> hkList = community.getHygienekits_filledAt();
+		int toIndexHK = 4;
+		if (hkList.size() < 4)toIndexHK = hkList.size();
+		community.setHygienekits_filledAt(community.getHygienekits_filledAt().subList(0, toIndexHK));
+		//*****************
+		List<Date> wList = community.getWater_filledAt();
+		int toIndexW = 4;
+		if (wList.size() < 4)toIndexW = wList.size();
+		community.setWater_filledAt(community.getWater_filledAt().subList(0, toIndexW));
+		//*****************
+		List<Date> fList = community.getFood_filledAt();
+		int toIndexF = 4;
+		if (fList.size() < 4)toIndexF = fList.size();
+		community.setFood_filledAt(community.getFood_filledAt().subList(0, toIndexF));
+		return community;
 	}
 //  -----------------------------------------------------------------------------------------
 //  FIND comment by ID

@@ -20,6 +20,7 @@
 		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
 		<div class="navbar">
 			<form id="logoutForm" method="POST" action="/logout">

@@ -23,6 +23,7 @@
 		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
 		<div class="navbar">
 			<form id="logoutForm" method="POST" action="/logout">
@@ -46,19 +47,6 @@
 								</c:forEach>
 							</form:select>
 						</p>
-<%-- 						<p>
-							<form:label path="street" class="lead col-form-label">Street: </form:label>
-							<form:input path="street" type="text" class="form-control col-11" />
-						</p>
-			
-						<p>
-							<form:label path="city" class="lead col-form-label">City:</form:label>
-							<form:input path="city" type="text" class="form-control col-11" />
-						<p>
-						<p>
-							<form:label path="state" class="lead col-form-label">State: </form:label>
-							<form:input path="state" type="text" class="form-control col-11" />
-						</p> --%>
 			
 						<p>
 							<form:label path="location" class="lead col-form-label">Location (nearest intersection, city, state): </form:label>
@@ -87,15 +75,14 @@
 			
 						<input class="btn btn-outline-secondary mt-3" type="submit"
 							value="Submit" />
-						<a class="btn btn-outline-danger mt-3" href="/events">Cancel</a>
+					<a class="btn btn-outline-danger mt-3" href="/resourcefull/home">Cancel</a>
 					</form:form>
 				</div>
 			</div>
-			
 			<div class="col-5 mapApi">
-				<img src="/img/map.png" alt="error" class="map">
 				<img src="/img/quote.jpg" alt="error" class="quote">
 			</div>
+		
 	<!-- end of row -->
 		</div>
 	</div>

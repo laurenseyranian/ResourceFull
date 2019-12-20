@@ -33,7 +33,7 @@ body{
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 650px;
+	margin-left: 600px;
 }
 .welcome {
 	margin-top: 50px;
@@ -46,9 +46,8 @@ body{
 	font-size: 20px;
 	font-family: "Work Sans", sans-serif;
 }
-.map {
-	width: 97%;
-	height: 500px;
+#map {
+	height: 700px;
 }
 .tableText {
 	font-family: "Work Sans", sans-serif;
