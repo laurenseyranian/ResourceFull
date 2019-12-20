@@ -19,11 +19,17 @@
 		<img src="/img/logo.svg" alt="error" class="logo">
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
-		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
+		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
+		<div class="navbar">
+			<form id="logoutForm" method="POST" action="/logout">
+        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        		<input class="btn btn-link text-light" type="submit" value="LOGOUT" />
+    		</form>
+    	</div>
 	</div>
 	
 	<p class="welcome text-center"> Hey <c:out value="${currentUser.first_name}"></c:out> <c:out value="${currentUser.last_name}"></c:out> take a look at your <c:out value="${community.name}"/> Neighbor's wishlist!</p>
@@ -85,28 +91,27 @@
 	</div>
 	
 	<div class="messageBox ml-3 mt-5">
-		<p class="text-center messageCenter">Message Center</p> 
-			<%-- <h1 class="display-4 text-success">Message Wall</h1>    
+		<p class="text-center messageCenter">Message Center</p>     
 				<div class="box">
-					<c:forEach var="message" items="${event.messages}">
+					<c:forEach var="message" items="${community.messages}">
 						<p class="lead"><c:out value="${message.user.first_name}"/> says: <c:out value="${message.message}"/></p>
 						
-						<a class="text-danger ml-1" href="/comment/${message.id}/${event.id}/delete">Delete</a>
+						<a class="text-danger ml-1" href="/comment/${message.id}/${community.id}/delete">Delete</a>
 						
-						<p>-----------------------------------------------------------</p>
+						<p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 			    	</c:forEach>
 			    </div>
 				
 				<form:form method="POST" action="/comment/create" modelAttribute="comment">
-				<form:hidden path="user" value="${user.id}"/>
-				<form:hidden path="event" value="${event.id}"/>
+				<form:hidden path="user" value="${currentUser.id}"/>
+				<form:hidden path="community" value="${community.id}"/>
 					    <p>
 				            <form:label path="message" class="col-sm-4 col-form-label lead" >Add Comment:</form:label>
 				            <form:textarea path="message" class="form-control col-sm-12" type="text"/></textarea>
 				        </p>
 				        
-					    <input class="btn btn-outline-success" type="submit" value="Submit"/>
-				 </form:form> --%>
+					    <input class="btn btn-outline-secondary" type="submit" value="Submit"/>
+				 </form:form>
 	</div>
 
 

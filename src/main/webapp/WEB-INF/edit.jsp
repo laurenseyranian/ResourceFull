@@ -19,11 +19,17 @@
 		<img src="/img/logo.svg" alt="error" class="logo">
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
-		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learn/more">LEARN MORE</a></div>
+		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
+		<div class="navbar">
+			<form id="logoutForm" method="POST" action="/logout">
+        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        		<input class="btn btn-link text-light" type="submit" value="LOGOUT" />
+    		</form>
+    	</div>
 	</div>
 	
 	<p class="edit">Edit <c:out value="${community.name}"/> Neighborhood</p>
@@ -34,12 +40,12 @@
 				<form:form method="POST" action="/resourcefull/{community.id}/update" modelAttribute="community">
 					<p>
 						<form:label path="name" class=" col-form-label">Neighborhood: </form:label>
-						<form:select path="name">
-							<c:forEach items="${names}" var="name">
-								<form:option value="${name}">${name}</form:option>
-							</c:forEach>
-						</form:select>
-					</p>
+							<form:select path="name">
+								<c:forEach items="${names}" var="name">
+									<form:option value="${name}">${name}</form:option>
+								</c:forEach>
+							</form:select>
+						</p>
 					<p>
 						<form:label path="street" class="lead col-form-label">Street: </form:label>
 						<form:input path="street" type="text" class="form-control col-11" />

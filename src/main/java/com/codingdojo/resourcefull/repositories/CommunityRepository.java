@@ -6,11 +6,13 @@ import org.springframework.data.repository.CrudRepository;
 import com.codingdojo.resourcefull.models.Community;
 
 public interface CommunityRepository extends CrudRepository <Community, Long> {
-	
-	//FIND community by ID
-	Community findCommunityById(Long event_id);
-
-	//FIND All communities
+//---------------------------------------------------------------------------------------------
+// FIND a neighborhood by ID
+//---------------------------------------------------------------------------------------------	
+	Community findCommunityById(Long community_id);
+//---------------------------------------------------------------------------------------------
+// FIND all neighborhoods
+//---------------------------------------------------------------------------------------------	
 		List<Community> findAll();
 		
 		

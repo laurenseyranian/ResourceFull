@@ -5,9 +5,12 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -68,7 +71,9 @@ public class Community {
 //----------------------------------------------------------------
 //	Relationships
 //----------------------------------------------------------------
-	
+	@OneToMany(mappedBy="community", fetch = FetchType.LAZY)
+	@OrderBy("createdAt desc")
+	private List<Message> messages;
 //----------------------------------------------------------------
 //	Constructors
 //----------------------------------------------------------------
@@ -76,21 +81,30 @@ public class Community {
 		
 	}
 	
-	public Community(Long id, int residents, int pets, int water, int hygienekits,
-			String liaisoncontactname, String liaisoncontactnumber, Date createdAt, Date updatedAt, String street, String city, String state, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.residents = residents;
-		this.pets = pets;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.setLiaisoncontactname(liaisoncontactname);
-		this.setLiaisoncontactnumber(liaisoncontactnumber);
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
+	public Community(Long id, @Size(min = 1, message = "Must select name from the list") String name, int residents,
+		int pets, String street, String city, String state, double lat, double longitude, List<Date> food_filledAt,
+		List<Date> water_filledAt, List<Date> hygienekits_filledAt, String liaisoncontactname,
+		String liaisoncontactnumber, Date createdAt, Date updatedAt, List<Message> messages) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.residents = residents;
+	this.pets = pets;
+	this.street = street;
+	this.city = city;
+	this.state = state;
+	this.lat = lat;
+	this.longitude = longitude;
+	this.food_filledAt = food_filledAt;
+	this.water_filledAt = water_filledAt;
+	this.hygienekits_filledAt = hygienekits_filledAt;
+	this.liaisoncontactname = liaisoncontactname;
+	this.liaisoncontactnumber = liaisoncontactnumber;
+	this.createdAt = createdAt;
+	this.updatedAt = updatedAt;
+	this.messages = messages;
+}
+
 //----------------------------------------------------------------
 //	Getters and Setters
 //----------------------------------------------------------------
@@ -205,6 +219,14 @@ public class Community {
 
 	public void setHygienekits_filledAt(List<Date> hygienekits_filledAt) {
 		this.hygienekits_filledAt = hygienekits_filledAt;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 	
 }

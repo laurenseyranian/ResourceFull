@@ -10,12 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.resourcefull.models.Community;
+import com.codingdojo.resourcefull.models.Message;
+import com.codingdojo.resourcefull.models.User;
 import com.codingdojo.resourcefull.services.CommunityService;
 import com.codingdojo.resourcefull.services.UserService;
 
@@ -62,7 +65,8 @@ public class CommunityController {
 // POST route for CREATING a neighborhood  
 //--------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/community/process", method = RequestMethod.POST)
-	public String postCreateNeighborhood(@Valid @ModelAttribute("community") Community community, BindingResult result) {
+	public String postCreateNeighborhood(@Valid @ModelAttribute("community") Community community,
+			BindingResult result) {
 		if (result.hasErrors()) {
 			return "/create.jsp";
 		} else {
@@ -75,9 +79,9 @@ public class CommunityController {
 // POST route for CREATING a 'resource filled' date
 //--------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/resourcefull/neighborhood/{community_id}", method = RequestMethod.POST)
-	public String create(@PathVariable("community_id") Long community_id, @RequestParam("resource_type") String resource_type) {
+	public String create(@PathVariable("community_id") Long community_id,
+			@RequestParam("resource_type") String resource_type) {
 		Community comm = communityService.findCommunityById(community_id);
-
 		if (resource_type.equals("water")) {
 			communityService.filledWater(comm);
 		}
@@ -88,6 +92,20 @@ public class CommunityController {
 			communityService.filledHygiene(comm);
 		}
 		return "redirect:/resourcefull/neighborhood/" + community_id;
+	}
+
+// -------------------------------------------------------------------------------------------------------
+// POST route for CREATING a new comment
+// -------------------------------------------------------------------------------------------------------
+	@PostMapping(value = "/comment/create")
+	public String createComment(@Valid @ModelAttribute("comment") Message message, BindingResult result, Model model, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("currentUser", user);
+		model.addAttribute("user", user);
+		communityService.createMessage(message);
+		System.out.println("made it here");
+		return "redirect:/resourcefull/neighborhood/" + message.getCommunity().getId();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -116,7 +134,7 @@ public class CommunityController {
 // --------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/neighborhood/{community_id}")
 	public String details(@PathVariable("community_id") Long community_id, Principal principal, Model model,
-			HttpSession session) {
+			HttpSession session, @ModelAttribute("comment") Message message) {
 		if (principal != null) {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
@@ -126,31 +144,32 @@ public class CommunityController {
 		}
 		return "details.jsp";
 	}
-	
-//--------------------------------------------------------------------------------------------
-//	Get Route for the About page 
-//--------------------------------------------------------------------------------------------
 
-@RequestMapping("/resourcefull/about")
-public String about() {
-return "about.jsp";
-}
 //--------------------------------------------------------------------------------------------
-//Get Route for the Blog page 
+//	GET Route for READING about page (User doesn't have to be logged in)
 //--------------------------------------------------------------------------------------------
+	@RequestMapping("/resourcefull/learnmore")
+	public String about() {
+		return "learnmore.jsp";
+	}
 
-@RequestMapping("/resourcefull/blog")
-public String blog() {
-return "blog.jsp";
-}
+//--------------------------------------------------------------------------------------------
+//	GET Route for READING the blog page (User doesn't have to be logged in)
+//--------------------------------------------------------------------------------------------
+	@RequestMapping("/resourcefull/blog")
+	public String blog() {
+		return "blog.jsp";
+	}
 
 // ------------------------------------------------------------------------------------------------------
 // GET route for UPDATING one neighborhood by ID
 // ------------------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/edit/neighborhood/{community_id}")
-	public String getUpdateNeighborhood(@PathVariable("community_id") Long community_id, Model model, @ModelAttribute("community") Community community) {
+	public String getUpdateNeighborhood(@PathVariable("community_id") Long community_id, Model model,
+			@ModelAttribute("community") Community community) {
 		Community comm = communityService.findCommunityById(community_id);
 		model.addAttribute("communities", communityService.findAll());
+		model.addAttribute("names", names);
 		return "edit.jsp";
 	}
 
@@ -158,14 +177,30 @@ return "blog.jsp";
 // POST route for UPDATE one event by ID
 //------------------------------------------------------------------------------------------------------    
 	@PutMapping("/resourcefull/{community_id}/update")
-	public String postUpdateNeighborhood(Model model, @PathVariable("community_id") Long community_id, @Valid @ModelAttribute("community") Community community,
-			BindingResult result) {
+	public String postUpdateNeighborhood(Model model, @PathVariable("community_id") Long community_id,
+			@Valid @ModelAttribute("community") Community community, BindingResult result) {
+		model.addAttribute("names", names);
 		if (result.hasErrors()) {
-			model.addAttribute("names", names);
 			return "edit.jsp";
 		} else {
 			this.communityService.updateCommunity(community);
 			return "redirect:/resourcefull/" + community.getId();
+		}
+	}
+
+//------------------------------------------------------------------------------------------------------
+// POST route for DELETING a comment by ID
+//------------------------------------------------------------------------------------------------------
+	@RequestMapping("/comment/{message_id}/{community_id}/delete")
+	public String deleteComment(Principal principal, @PathVariable("message_id") Long comment_id, @PathVariable("community_id") Long community_id) {
+		if (principal != null) {
+			String username = principal.getName();
+			if (userService.findByUsername(username).getId().equals(communityService.findCommentById(comment_id).getUser().getId())) {
+				communityService.deleteComment(comment_id);
+			}
+			return "redirect:/resourcefull/neighborhood/" + community_id;
+		} else {
+			return "redirect:/resourcefull/neighborhood/" + community_id;
 		}
 	}
 
