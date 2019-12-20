@@ -1,6 +1,6 @@
 
 body{
-    font-family: 'Baskervville', serif;
+   font-family: 'Baskervville', serif;
 }
 .topOfPage{
     width: 100%;
@@ -36,4 +36,86 @@ body{
 .movenavbar{
     margin-left: 20%;
 }
+.articles{
+	font-family: "Work Sans", sans-serif;
+	font-size: 30px;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+.facts1{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 70px;
+	
+}
+.header{
+	font-family: "Work Sans", sans-serif;
+	font-size: 60px;
+	margin-top: 50px; 
+	margin-left: 50px; 
+	
+}
+.facts1notes{
+	width:10%;
+	margin-top: 3%;
+
+	
+}
+.facts2{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 70px;
+
+	
+}
+.facts2notes{
+	width:20%;
+	margin-top: 3%;
+	
+}
+.heart{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 70px;
+	
+}
+.facts3notes{
+	width:20%;
+	margin-top: 3%;
+	
+	
+}
+.article{
+	margin-left: 45%;
+	/* margin-bottom: 40%; */
+	
+} 
+h2{
+	margin-left:48%;
+	margin-top: 2%;
+}
+.nytimes{
+	
+}
+#player{
+	margin-bottom: 10%;
+}
+body{
+	background-color:gray; 
+}
+.blog{
+	width:20%;
+	height:20%;
+	display:inline-block;
+	
+}
+.pblog{
+	margin-left:40%;
+	display:inline-block;
+}
+.header{
+	display:inline-block;
+	width:40%;
+}
+
 
