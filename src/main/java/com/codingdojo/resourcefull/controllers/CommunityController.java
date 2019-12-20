@@ -107,7 +107,8 @@ public class CommunityController {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
 			model.addAttribute("communities", communityService.findAll());
-		}
+		}		
+		model.addAttribute("jsonData", " { 'data' : 'hello' } ");
 		return "home.jsp";
 	}
 
