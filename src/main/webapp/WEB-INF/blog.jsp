@@ -127,11 +127,11 @@ Despite recent increases in unsheltered homelessness, since 2007 24% fewer peopl
 $(document).ready(function () {
     $.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=homeless+population&api-key=3vV007lbGYtAKmPPk8lHB7wvZd2ddeSD', function (data) {
         console.log(data);
-        $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[5].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[5].web_url + '"> Read more! </a></div></div>')
-       	 $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[4].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[4].web_url + '"> Read more! </a></div></div>')
-       	  $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[3].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[3].web_url + '"> Read more! </a></div></div>')
-       	   $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[2].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[2].web_url + '"> Read more! </a></div></div>')
-       	    $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[1].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[1].web_url + '"> Read more! </a></div></div>')
+        $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[5].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[5].web_url + '"> Read more! </a></div></div>')
+       	 $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[4].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[4].web_url + '"> Read more! </a></div></div>')
+       	  $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[3].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[3].web_url + '"> Read more! </a></div></div>')
+       	   $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[2].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[2].web_url + '"> Read more! </a></div></div>')
+       	    $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[1].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[1].web_url + '"> Read more! </a></div></div>')
     });
 })
 </script>
