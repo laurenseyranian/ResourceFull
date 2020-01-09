@@ -33,7 +33,7 @@ body{
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 600px;
+	margin-left: 550px;
 }
 .add {
 	margin-top: 50px;
@@ -56,7 +56,8 @@ body{
 	font-family: "Work Sans", sans-serif;
 }
 .quote {
-	width: 100%;
+	width: 90%;
 	height: 450px;
+	margin-left: 20%;
 	margin-top: 150px;
 }

@@ -13,23 +13,24 @@
 </head>
 
 <body>
-<div class="topOfPage">
-        <img src="/img/logo.svg" alt="error" class="logo">
-        <p class="title text-center">Keeping Neighbors Safe Where They Are</p>
-        <div class="whiteLine"></div>
-        <div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
-        <div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
-        <div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
-        <div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
-        <div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
-        <div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
-        <div class="navbar">
-            <form id="logoutForm" method="POST" action="/logout">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <input class="btn btn-link text-light" type="submit" value="LOGOUT" />
-            </form>
-        </div>
-    </div>
+	<div class="topOfPage">
+		<img src="/img/logo.svg" alt="error" class="logo">
+		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
+		<div class="whiteLine"></div>
+		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">GET INVOLVED</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">CONTACT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/signup">SIGN-UP</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
+		<div class="navbar">
+			<form id="logoutForm" method="POST" action="/logout">
+        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        		<input class="btn btn-link text-light" type="submit" value="LOGOUT" />
+    		</form>
+    	</div>
+	</div>
 <img class="blog" alt="" src="/img/blog.gif">
 
 <div class="header">
@@ -72,11 +73,11 @@ Despite recent increases in unsheltered homelessness, since 2007 24% fewer peopl
 
 
 </div>
-	<h2> New York Times Articles </h2>
+	<div class="articleBox">
+		<h2>New York Times Articles </h2>
 	
-	<div class="article">
-	</div>
-		
+		<div class="article"></div>
+	</div>	
 
 
 
@@ -127,11 +128,11 @@ Despite recent increases in unsheltered homelessness, since 2007 24% fewer peopl
 $(document).ready(function () {
     $.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=homeless+population&api-key=3vV007lbGYtAKmPPk8lHB7wvZd2ddeSD', function (data) {
         console.log(data);
-        $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[5].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[5].web_url + '"> Read more! </a></div></div>')
-       	 $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[4].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[4].web_url + '"> Read more! </a></div></div>')
-       	  $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[3].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[3].web_url + '"> Read more! </a></div></div>')
-       	   $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[2].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[2].web_url + '"> Read more! </a></div></div>')
-       	    $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[1].headline.main + '</div> <div class="col"><a class="btn btn-outline-secondary" href="' + data.response.docs[1].web_url + '"> Read more! </a></div></div>')
+        $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[5].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[5].web_url + '"> Read more! </a></div></div>')
+       	 $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[4].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[4].web_url + '"> Read more! </a></div></div>')
+       	  $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[3].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[3].web_url + '"> Read more! </a></div></div>')
+       	   $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[2].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[2].web_url + '"> Read more! </a></div></div>')
+       	    $('.article').append("<div class=' h5 row nytimes'> <div class= 'col'>" + data.response.docs[1].headline.main + '</div> <div class="col"><a class="btn btn-outline-light" href="' + data.response.docs[1].web_url + '"> Read more! </a></div></div>')
     });
 })
 </script>

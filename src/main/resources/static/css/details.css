@@ -33,7 +33,7 @@ body{
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 600px;
+	margin-left: 550px;
 }
 .welcome {
 	margin-top: 50px;
@@ -52,12 +52,9 @@ body{
 .tableText {
 	font-family: "Work Sans", sans-serif;
 }
-.btn-outline-secondary{
-	margin-left: 40%;
-}
 .messageBox {
 	width: 97.5%;
-	height: 300px;
+	height: 700px;
 	border: 2px solid black;
 	border-radius: 3px;
 	padding: 15px;
@@ -66,4 +63,11 @@ body{
 .messageCenter {
 	font-family: "Work Sans", sans-serif;
 	font-size: 30px;
+	color: #5ECC15;
+}
+.messagesList{
+	margin-left: 90px;
+}
+.messageText{
+	color: #5ECC15;
 }

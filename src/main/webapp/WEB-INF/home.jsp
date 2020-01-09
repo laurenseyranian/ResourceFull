@@ -76,7 +76,7 @@
     function initMap() {
         //Map options
         var options = {
-            zoom: 12,
+            zoom: 13,
             center: { lat: 37.8043514, lng: -122.2711639 }
         }
         //New map
@@ -104,10 +104,11 @@
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
 		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">GET INVOLVED</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">CONTACT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/signup">SIGN-UP</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
 		<div class="navbar">
 			<form id="logoutForm" method="POST" action="/logout">
@@ -117,10 +118,10 @@
     	</div>
 	</div>
 	
-	<p class="text-center welcome">Welcome <c:out value="${currentUser.first_name}"></c:out> <c:out value="${currentUser.last_name}"></c:out>!</p>
+	<p class="text-center welcome">Welcome <c:out value="${currentUser.first_name}"></c:out>!</p>
 	<div class="middleOfPage row">
 		<div class="col-6">			
-			<table class="table ml-3">
+			<table class="table">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col" class="lead">Neighborhood</th>

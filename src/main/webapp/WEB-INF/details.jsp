@@ -80,7 +80,7 @@
     function initMap() {
         //Map options
         var options = {
-            zoom: 12,
+            zoom: 13,
             center: { lat: 37.8043514, lng: -122.2711639 }
         }
         //New map
@@ -102,10 +102,11 @@
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
 		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">GET INVOLVED</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">CONTACT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/signup">SIGN-UP</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
 		<div class="navbar">
 			<form id="logoutForm" method="POST" action="/logout">
@@ -118,7 +119,6 @@
 	<p class="welcome text-center">
 		Hey
 		<c:out value="${currentUser.first_name}"></c:out>
-		<c:out value="${currentUser.last_name}"></c:out>
 		take a look at your
 		<c:out value="${community.name}" />
 		Neighbor's wishlist!
@@ -130,7 +130,7 @@
 	</p>
 	<div class="middleOfPage row">
 		<div class="col-6">
-			<table class="table ml-3">
+			<table class="table">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Weekly Resource Need</th>
@@ -207,37 +207,43 @@
 				</tbody>
 			</table>
 
-			<a class="btn btn-outline-secondary mt-5"
+			<a class="btn btn-outline-secondary btn-lg ml-3"
 				href="/resourcefull/edit/neighborhood/${community.id}">Edit <c:out
 					value="${community.name}" /></a>
+			
+			<a class="btn btn-outline-secondary btn-lg ml-3" href="/resourcefull/home">View all neighborhoods</a>
+					
 		</div>
 
-		<div id="map" class="col-6"></div>
+		<div id="map" class="col"></div>
 		<!-- end of row -->
 	</div>
 
 	<div class="messageBox ml-3 mt-5">
-		<p class="text-center messageCenter">Message Center</p>
+		<p class="messageCenter mb-2 ml-5">Message Center</p>
+		<div class="row">
+			<div class="col-5 ml-5">
+				<form:form method="POST" action="/comment/create" modelAttribute="comment">
+					<form:hidden path="user" value="${currentUser.id}"/>
+					<form:hidden path="community" value="${community.id}"/>
+					<p>
+					   <form:label path="message" class="col-sm-4 col-form-label lead" >Add Comment:</form:label>
+					   <form:textarea path="message" class="form-control col-sm-8" rows="5" type="text"/></textarea>
+					</p>
+					        
+					<input class="btn btn-outline-secondary" type="submit" value="Submit"/>
+				</form:form>
+			</div>
+			
+			<div class="col-5 messagesList">
 				<div class="box">
 					<c:forEach var="message" items="${community.messages}">
-						<p><c:out value="${message.message}"/> - by <c:out value="${message.user.first_name}"/> on <fmt:formatDate pattern ="MMMM dd, yyyy" value ="${message.createdAt}"/></p>
-						
-						<a class="text-danger ml-1" href="/comment/${message.id}/${community.id}/delete">Delete</a>
-						
-						<p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-			    	</c:forEach>
-			    </div>
-				
-				<form:form method="POST" action="/comment/create" modelAttribute="comment">
-				<form:hidden path="user" value="${currentUser.id}"/>
-				<form:hidden path="community" value="${community.id}"/>
-					    <p>
-				            <form:label path="message" class="col-sm-4 col-form-label lead" >Add Comment:</form:label>
-				            <form:textarea path="message" class="form-control col-sm-6" rows="5" type="text"/></textarea>
-				        </p>
-				        
-					    <input class="btn btn-outline-secondary" type="submit" value="Submit"/>
-				 </form:form>
+						<p class="dinline-block"><p class="messageText dinline-block"><c:out value="${message.message}"/></p> (by <c:out value="${message.user.first_name}"/> on <fmt:formatDate pattern ="MMMM dd, yyyy" value ="${message.createdAt}"/>) <a class="text-danger ml-4" href="/comment/${message.id}/${community.id}/delete">Delete</a>	</p>					
+						<p>---------------------------------------------------------------------------------------------------------------------</p>
+				    </c:forEach>
+				  </div>
+			</div>
+		</div>		
 	</div>
 
 

@@ -35,7 +35,7 @@ body{
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 600px;
+	margin-left: 550px;
 }
 .articles{
 	font-family: "Work Sans", sans-serif;
@@ -58,7 +58,10 @@ body{
 }
 .facts1notes{
 	width:10%;
-	margin-top: 3%;
+	margin-top: 2%;
+	margin-right:15%;
+	font-size:20px;
+	color:white;
 
 	
 }
@@ -70,8 +73,11 @@ body{
 	
 }
 .facts2notes{
-	width:20%;
-	margin-top: 3%;
+	width:10%;
+	margin-top: 2%;
+	margin-right:15%;
+	font-size:20px;
+	color:white;
 	
 }
 .heart{
@@ -81,8 +87,11 @@ body{
 	
 }
 .facts3notes{
-	width:20%;
-	margin-top: 3%;
+	width:10%;
+	margin-top: 2%;
+	margin-right:15%;
+	font-size:20px;
+	color:white;
 	
 	
 }
@@ -94,12 +103,17 @@ body{
 h2{
 	margin-left:48%;
 	margin-top: 2%;
+	margin-bottom: 2%;
+	font-family: "Work Sans", sans-serif;
+	
 }
 .nytimes{
 	
 }
 #player{
-	margin-bottom: 10%;
+	margin-bottom: 8%;
+	margin-left: 5%;
+	margin-top: -100px;
 }
 body{
 	background-color:gray; 
@@ -118,5 +132,4 @@ body{
 	display:inline-block;
 	width:40%;
 }
-
 

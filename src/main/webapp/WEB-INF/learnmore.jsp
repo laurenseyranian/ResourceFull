@@ -17,10 +17,11 @@
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
 		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">GET INVOLVED</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">LEARN MORE</a></div>
-		<div class="navbar"><a class="text-light" href="/resourcefull/login">SIGN-UP</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">CONTACT</a></div>
+		<div class="navbar"><a class="text-light" href="/resourcefull/signup">SIGN-UP</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
 		<div class="navbar">
 			<form id="logoutForm" method="POST" action="/logout">

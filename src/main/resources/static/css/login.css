@@ -33,7 +33,7 @@ body{
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 600px;
+	margin-left: 550px;
 }
 .title{
 	font-size: 50px;
@@ -43,13 +43,13 @@ body{
 }
 .login{
 	font-size: 30px;
-	margin-left: 5%;
+	margin-left: -5%;
 	margin-top: 50px;
 	font-family: "Work Sans", sans-serif;
 }
 .loginBox {
 	font-family: "Work Sans", sans-serif;
-	margin-left: 35%;
+	margin-left: 30%;
 	background-color: white;
 }
 .loginButton{
