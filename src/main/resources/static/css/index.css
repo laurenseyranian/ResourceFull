@@ -9,31 +9,29 @@ body{
 }
 .logo{
 	width: 15%;
-	margin-left: 40%;
-	margin-top: 80px;
-}
-.navbar{
- 	display: inline-block;
+	margin-left: 45%;
+	margin-top: 5%;
 }
 .title{
-	font-size: 50px;
+	font-size: 45px;
 	font-weight: bolder;
-	margin-top: 80px;
+	margin-top: 8%;
 	color: white;
 }
 .whiteLine{
 	width: 100%;
 	height: 2px;
-	margin-top: 90px;
+	margin-top: 30px;
 	background-color: white;
 }
 .navbar{
+	display: inline-block;
 	color: white;
 	font-family: "Work Sans", sans-serif;
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 550px;
+	margin-left: 33%;
 }
 .question{
 	font-size: 30px;
@@ -55,7 +53,6 @@ body{
 	background-color: #F2F1F2;
 	display: inline-block;
 	margin-top: 50px;
-	
 }
 #wishlist{
 	width: 90%;
@@ -71,9 +68,8 @@ body{
 	margin-left: 50px;
 }
 .blackLine{
-	width: 200px;
+	width: 100%;
 	height: 2px;
-	margin-left: 300px;
 	margin-bottom: 30px;
 	background-color: black;
 }
@@ -125,4 +121,17 @@ body{
 	margin-left: 140px;
 	color: #5DCC14;
 }
+.about{
+	font-size: 25px;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-family: 'Baskervville', serif;
+}
+.nav{
+	font-size: 25px;
+	margin-left: 25%;
+	margin-right: 5%;
+	font-family: 'Baskervville', serif;
+}
+
 

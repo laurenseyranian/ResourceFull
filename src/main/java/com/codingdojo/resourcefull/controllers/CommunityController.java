@@ -167,6 +167,14 @@ public class CommunityController {
 	public String about() {
 		return "learnmore.jsp";
 	}
+	
+//--------------------------------------------------------------------------------------------
+//	GET Route for READING about page (User doesn't have to be logged in)
+//--------------------------------------------------------------------------------------------
+	@RequestMapping("/resourcefull/contact")
+	public String contact() {
+		return "about.jsp";
+	}
 
 //--------------------------------------------------------------------------------------------
 //	GET Route for READING the blog page (User doesn't have to be logged in)

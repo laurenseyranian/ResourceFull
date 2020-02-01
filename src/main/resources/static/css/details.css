@@ -9,52 +9,50 @@ body{
 }
 .logo{
 	width: 15%;
-	margin-left: 40%;
-	margin-top: 80px;
-}
-.navbar{
- 	display: inline-block;
+	margin-left: 45%;
+	margin-top: 5%;
 }
 .title{
-	font-size: 50px;
+	font-size: 45px;
 	font-weight: bolder;
-	margin-top: 80px;
+	margin-top: 8%;
 	color: white;
 }
 .whiteLine{
 	width: 100%;
 	height: 2px;
-	margin-top: 90px;
+	margin-top: 30px;
 	background-color: white;
 }
 .navbar{
+	display: inline-block;
 	color: white;
 	font-family: "Work Sans", sans-serif;
 	margin-left: 1%;
 }
 .movenavbar{
-	margin-left: 550px;
+	margin-left: 30%;
 }
 .welcome {
-	margin-top: 50px;
-	margin-bottom: 10px;
-	font-size: 30px;
-	font-family: "Work Sans", sans-serif;
-}
-.contact {
-	margin-bottom: 50px;
+	margin-top: 1%;
+	margin-bottom: 1%;
 	font-size: 20px;
 	font-family: "Work Sans", sans-serif;
 }
+.contact {
+	margin-bottom: 1%;
+	font-size: 17px;
+	font-family: "Work Sans", sans-serif;
+}
 #map {
-	height: 700px;
+	height: 500px;
 }
 .tableText {
 	font-family: "Work Sans", sans-serif;
 }
 .messageBox {
 	width: 97.5%;
-	height: 700px;
+	height: 50%;
 	border: 2px solid black;
 	border-radius: 3px;
 	padding: 15px;

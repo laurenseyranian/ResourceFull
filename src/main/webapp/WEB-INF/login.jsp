@@ -19,19 +19,19 @@
 		<img src="/img/logo.svg" alt="error" class="logo">
 		<p class="title text-center">Keeping Neighbors Safe Where They Are</p>
 		<div class="whiteLine"></div>
-		<div class="navbar movenavbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
+		<div class="movenavbar navbar"><a class="text-light" href="/resourcefull/home">HOME</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">GET INVOLVED</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull">ABOUT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/blog">BLOG</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/learnmore">CONTACT</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/signup">SIGN-UP</a></div>
 		<div class="navbar"><a class="text-light" href="/resourcefull/login">LOGIN</a></div>
-		<div class="navbar">
+<%-- 		<div class="navbar">
 			<form id="logoutForm" method="POST" action="/logout">
         		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         		<input class="btn btn-link text-light" type="submit" value="LOGOUT" />
     		</form>
-    	</div>
+    	</div> --%>
 	</div>
 	
 	<p class="text-center login">Login</p>
