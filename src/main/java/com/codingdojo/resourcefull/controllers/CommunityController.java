@@ -59,7 +59,7 @@ public class CommunityController {
 //--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
-// GET route for CREATING a neighborhood 
+// GET route for CREATING a neighborhood (User must be logged in)
 //--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/add/neighborhood")
 	public String getCreateNeighborhood(@ModelAttribute("community") Community community, Model model) {
@@ -77,7 +77,7 @@ public class CommunityController {
 			return "/create.jsp";
 		} else {
 			communityService.createOrUpdateCommunity(community);
-			return "redirect:/resourcefull/home";
+			return "redirect:/resourcefull/portal";
 		}
 	}
 
@@ -116,17 +116,21 @@ public class CommunityController {
 	}
 
 //--------------------------------------------------------------------------------------------
-// GET route for READING index page (User doesn't have to be logged in)
+// GET route for READING home page (User doesn't have to be logged in)
 //--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull")
-	public String index() {
-		return "index.jsp";
+	public String index(Principal principal, Model model, HttpSession session) {
+		if (principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+		}
+		return "home.jsp";
 	}
 
 //--------------------------------------------------------------------------------------------
-// GET route for READING home page (User must be logged in) 
+// GET route for READING portal page (User must be logged in) 
 //--------------------------------------------------------------------------------------------
-	@RequestMapping("/resourcefull/home")
+	@RequestMapping("/resourcefull/my-portal")
 	public String home(Principal principal, Model model, HttpSession session) {
 		Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
@@ -138,11 +142,11 @@ public class CommunityController {
 	        model.addAttribute("communities", comms);
 	        model.addAttribute("data", gsonBuilder.toJson(comms));
 		}
-		return "home.jsp";
+		return "portal.jsp";
 	}
 
 // --------------------------------------------------------------------------------------------
-// GET route for READING details of ONE neighborhood
+// GET route for READING details of ONE neighborhood (User must be logged in)
 // --------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/neighborhood/{community_id}")
 	public String details(@PathVariable("community_id") Long community_id, Principal principal, Model model,
@@ -157,23 +161,53 @@ public class CommunityController {
 			model.addAttribute("community", comm);
 	        model.addAttribute("data", gsonBuilder.toJson(comm));
 		}
-		return "details.jsp";
+		return "readone.jsp";
 	}
 
+//--------------------------------------------------------------------------------------------
+//	GET Route for READING get involved page (User doesn't have to be logged in)
+//--------------------------------------------------------------------------------------------
+	@RequestMapping("/resourcefull/get-involved")
+	public String getinvolved(Principal principal, Model model, HttpSession session) {
+		if (principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+		}
+		return "getinvolved.jsp";
+	}
 //--------------------------------------------------------------------------------------------
 //	GET Route for READING about page (User doesn't have to be logged in)
 //--------------------------------------------------------------------------------------------
-	@RequestMapping("/resourcefull/learnmore")
-	public String about() {
-		return "learnmore.jsp";
+	@RequestMapping("/resourcefull/about")
+	public String about(Principal principal, Model model, HttpSession session) {
+		if (principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+		}
+		return "about.jsp";
 	}
 
 //--------------------------------------------------------------------------------------------
-//	GET Route for READING the blog page (User doesn't have to be logged in)
+//	GET Route for READING the news page (User doesn't have to be logged in)
 //--------------------------------------------------------------------------------------------
-	@RequestMapping("/resourcefull/blog")
-	public String blog() {
-		return "blog.jsp";
+	@RequestMapping("/resourcefull/news")
+	public String news(Principal principal, Model model, HttpSession session) {
+		if (principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+		}
+		return "news.jsp";
+	}
+//--------------------------------------------------------------------------------------------
+//	GET Route for READING the contact page (User doesn't have to be logged in)
+//--------------------------------------------------------------------------------------------
+	@RequestMapping("/resourcefull/contact")
+	public String contact(Principal principal, Model model, HttpSession session) {
+		if (principal != null) {
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+		}
+		return "contact.jsp";
 	}
 
 // ------------------------------------------------------------------------------------------------------
@@ -189,7 +223,7 @@ public class CommunityController {
 	}
 
 //------------------------------------------------------------------------------------------------------
-// POST route for UPDATE one event by ID
+// POST route for UPDATE one neighborhood by ID
 //------------------------------------------------------------------------------------------------------    
 	@PutMapping("/neighborhood/{id}/update")
 	public String postUpdateNeighborhood(Model model, @PathVariable("id") Long community_id,

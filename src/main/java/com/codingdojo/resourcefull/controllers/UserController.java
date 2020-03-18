@@ -50,42 +50,72 @@ public class UserController {
 //								REGISTRATION ROUTES
 //---------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------
-// GET route for READING sign-up page
+//---------------------------------------------------------------------------------------------
+// GET route for READING register page
 //---------------------------------------------------------------------------------------------	
-	@RequestMapping("/resourcefull/signup")
+	@RequestMapping("/resourcefull/register")
 	public String signupForm(@ModelAttribute("user") User user) {
-		return "signup.jsp";
+		return "register.jsp";
 	}
 
 //--------------------------------------------------------------------------------------------
 // POST route for CREATING a user with user credentials
 // --------------------------------------------------------------------------------------------
-	@RequestMapping(value = "/signup/process", method = RequestMethod.POST)
+	@RequestMapping(value = "/register/process", method = RequestMethod.POST)
 	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, RedirectAttributes attribute) {
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
-			return "signup.jsp";
+			return "register.jsp";
 		}
 		userService.saveWithUserRole(user);
-		return "redirect:/resourcefull/login";
+		return "redirect:/resourcefull/my-portal";
 	}
 
+	
 //---------------------------------------------------------------------------------------------
 //									LOGIN ROUTES
 //---------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
-// POST route for logging in a user and logging out a user
+// GET route for logging in a user and logging out a user
 //--------------------------------------------------------------------------------------------
-	@RequestMapping(value = "/resourcefull/login")
+	@RequestMapping(value = "/resourcefull/sign-in")
 	public String loginUser(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout, Model model) {
 		if (error != null) {
-			model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
+			model.addAttribute("loginError", "Invalid Credentials, Please try again.");
 		}
 		if (logout != null) {
 			model.addAttribute("logoutMessage", "Logout Successful!");
 		}
-		return "login.jsp";
+		return "signin.jsp";
 	}
+	
+//--------------------------------------------------------------------------------------------
+// POST route for logging in a user
+//--------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/resourcefull/sign-in", method = RequestMethod.POST)
+	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model,
+		HttpSession session, RedirectAttributes attribute) {
+		if (email.length() < 1) {
+			attribute.addFlashAttribute("loginError", "Must enter an email");
+		return "redirect:/resourcefull/sign-in";
+		
+		} else if (password.length() < 1) {
+			attribute.addFlashAttribute("loginError", "Must enter a password");
+			return "redirect:/resourcefull/sign-in";
+		} else if (userService.authenticateUser(email, password)) {
+			User user = userService.findByEmail(email);
+				if (user == null) {
+					attribute.addFlashAttribute("loginError", "User does not exist");
+				} else {
+					session.setAttribute("userId", user.getId());
+					session.setAttribute("loggedIn", true);
+					return "redirect:/resourcefull/my-portal";
+				}
+			} else {
+				attribute.addFlashAttribute("loginError", "Invalid Password");
+			}
+			return "redirect:/resourcefull/sign-in";
+		}
+	
 }

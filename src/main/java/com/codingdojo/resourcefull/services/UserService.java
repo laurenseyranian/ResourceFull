@@ -80,20 +80,9 @@ public class UserService {
             }
         }
     }
-////--------------------------------------------------------------------------------------------
-//// CHECK is user exits
-////--------------------------------------------------------------------------------------------
-//    public boolean checkUser(String email) {
-//        User user = userRepository.findByEmail(email);
-//        if(user == null) {
-//            return false;
-//        }
-//        else {
-//        	return true;
-//        }
-//    }
+
 //--------------------------------------------------------------------------------------------
-// ASSIGN account as an USER
+// SAVES a client with only the USER role
 //--------------------------------------------------------------------------------------------   
     public void saveWithUserRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -102,7 +91,7 @@ public class UserService {
     }
      
 //--------------------------------------------------------------------------------------------
-// ASSIGNS account as an ADMINISTRATOR
+// SAVES a client with only the ADMINISTRATOR role
 //-------------------------------------------------------------------------------------------- 
     public void saveUserWithAdminRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

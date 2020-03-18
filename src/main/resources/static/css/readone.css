@@ -1,0 +1,72 @@
+body{
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+body{
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #99752E;
+}
+pre{
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+a{
+	color: #99752E;
+}
+a:hover{
+	color:color: #99752E;
+	text-decoration: none;
+}
+.icon1{
+	width: 27px;
+	height: auto;
+}
+.line{
+	width: 100%;
+	height: 1px;
+	background-color: #99752E;
+}
+.username{
+	color: #99752E;
+}
+#active{
+	color: #99752E;
+}
+#table{
+	border-radius: 20px;
+	border: .5px solid #DEE1E6;
+	height: 550px;
+}
+.thead, .tbody{
+	color: #99752E;
+}
+.tablebutton, .submitbutton{
+	color: #99752E;
+	border-radius: 25px;
+	border: 1px solid #99752E;
+	width: 120px;
+	height: 30px;
+}
+.editbutton{
+	color: #99752E;
+	border-radius: 25px;
+	border: 1px solid #99752E;
+	width: 170px;
+	height: 30px;
+}
+#map{
+	height: 600px;
+}
+.leavemessagebox{
+	
+	border: .5px solid #99752E;
+	height: 350px;
+}
+.allmessagesbox{
+	border: .5px solid #99752E;
+	height: 350px;
+	overflow: scroll;
+}
+
+.icon2, .icon3{
+	width: 15px;
+	height: 25px;
+}
