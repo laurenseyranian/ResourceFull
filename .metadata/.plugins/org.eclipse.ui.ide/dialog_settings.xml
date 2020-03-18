@@ -45,11 +45,26 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+<<<<<<< HEAD
 			<item value="/Users/LaurenSeyranian/Desktop/dojo_assignments/java/springToolSuite"/>
 			<item value="/Users/LaurenSeyranian/Desktop/ResourceFull"/>
+=======
+			<item value="/Users/iheartpan/Desktop/ResourceFull"/>
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 			<item value="/Users/iheartpan/Desktop/dojo_assignments/Java/SpringToolSuite_Workspace"/>
 		</list>
 	</section>
 	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/iheartpan/Desktop/ResourceFull"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
 	</section>
 </section>

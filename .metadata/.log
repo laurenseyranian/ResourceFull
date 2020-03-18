@@ -43,11 +43,16 @@ Binding(COMMAND+SHIFT+T,
 
 !ENTRY org.eclipse.ui 2 2 2019-12-16 13:55:19.977
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+<<<<<<< HEAD
 !SESSION 2020-01-11 14:44:52.269 -----------------------------------------------
+=======
+!SESSION 2020-01-07 15:52:38.914 -----------------------------------------------
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 eclipse.buildId=4.4.2.201911201053-RELEASE
 java.version=1.8.0_231
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+<<<<<<< HEAD
 Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/LaurenSeyranian/.eclipse_keyring
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/LaurenSeyranian/.eclipse_keyring
 
@@ -57,12 +62,27 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springfr
 !ENTRY org.eclipse.jface 2 0 2020-01-11 15:01:55.550
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2020-01-11 15:01:55.551
+=======
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -product org.springframework.boot.ide.branding.sts4 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/iheartpan/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -product org.springframework.boot.ide.branding.sts4 -data /Users/iheartpan/Desktop/ResourceFull -product org.springframework.boot.ide.branding.sts4 -keyring /Users/iheartpan/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-01-07 15:52:40.819
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2020-01-07 15:53:01.884
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-01-07 15:53:01.885
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 !MESSAGE A conflict occurred for COMMAND+SHIFT+T:
 Binding(COMMAND+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1397b141,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d4e06bb,
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -70,21 +90,32 @@ Binding(COMMAND+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@579dde54,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2eb9c7ad,
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2020-01-11 15:01:55.899
 !MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
 
 !ENTRY org.eclipse.ui 2 2 2020-01-11 15:22:28.002
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
 !SESSION 2020-01-30 15:13:03.568 -----------------------------------------------
+=======
+!ENTRY org.eclipse.ui 2 2 2020-01-07 16:05:51.956
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+!SESSION 2020-01-12 11:59:04.528 -----------------------------------------------
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 eclipse.buildId=4.4.2.201911201053-RELEASE
 java.version=1.8.0_231
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+<<<<<<< HEAD
 Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/LaurenSeyranian/.eclipse_keyring
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/LaurenSeyranian/.eclipse_keyring
 
@@ -94,12 +125,27 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springfr
 !ENTRY org.eclipse.jface 2 0 2020-01-30 15:54:52.274
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2020-01-30 15:54:52.274
+=======
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/iheartpan/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/iheartpan/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-01-12 11:59:06.158
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2020-01-12 12:00:14.433
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-01-12 12:00:14.433
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 !MESSAGE A conflict occurred for COMMAND+SHIFT+T:
 Binding(COMMAND+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@593f7d2e,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@58d4fe33,
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -107,21 +153,32 @@ Binding(COMMAND+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6e8aea7e,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1952ad9d,
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2020-01-30 15:54:52.614
 !MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
 
 !ENTRY org.eclipse.ui 2 2 2020-01-30 15:58:52.307
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
 !SESSION 2020-01-30 16:34:13.716 -----------------------------------------------
+=======
+!ENTRY org.eclipse.ui 2 2 2020-01-12 12:05:33.745
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+!SESSION 2020-01-12 12:10:35.646 -----------------------------------------------
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 eclipse.buildId=4.4.2.201911201053-RELEASE
 java.version=1.8.0_231
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+<<<<<<< HEAD
 Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/LaurenSeyranian/.eclipse_keyring
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/LaurenSeyranian/.eclipse_keyring
 
@@ -131,12 +188,27 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springfr
 !ENTRY org.eclipse.jface 2 0 2020-01-30 16:34:25.816
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2020-01-30 16:34:25.817
+=======
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/iheartpan/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/iheartpan/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-01-12 12:10:36.877
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2020-01-12 12:18:01.273
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-01-12 12:18:01.273
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 !MESSAGE A conflict occurred for COMMAND+SHIFT+T:
 Binding(COMMAND+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@46fa2a7e,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@28551755,
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -144,11 +216,16 @@ Binding(COMMAND+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3d02ff64,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7ec68821,
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2020-01-30 16:34:26.124
 !MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
 
@@ -567,3 +644,7 @@ org.apache.lucene.index.CorruptIndexException: doc counts differ for segment _2:
 
 !ENTRY org.eclipse.core.resources 2 10035 2020-01-30 16:35:28.403
 !MESSAGE The workspace will exit with unsaved changes in this session.
+=======
+!ENTRY org.eclipse.ui 2 2 2020-01-12 12:19:27.235
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+>>>>>>> 3bef2b2d04fde90a5009c0748149b839ca197a95

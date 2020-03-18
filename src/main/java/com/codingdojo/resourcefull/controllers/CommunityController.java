@@ -186,7 +186,7 @@ public class CommunityController {
 		}
 		return "about.jsp";
 	}
-
+	
 //--------------------------------------------------------------------------------------------
 //	GET Route for READING the news page (User doesn't have to be logged in)
 //--------------------------------------------------------------------------------------------
