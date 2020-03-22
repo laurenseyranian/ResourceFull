@@ -17,14 +17,14 @@
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9XuSocOU1HX2gzkpBUWfMxFp6b3uwiVU&callback=initMap" async defer></script>
-    <script>
-    class GoogleMap{
+ 	<script>
+    	class GoogleMap{
             constructor(){
                 this.instance = this;
                 this.key = 'AIzaSyD9XuSocOU1HX2gzkpBUWfMxFp6b3uwiVU'
             }
 
-            geocode(location, name) {
+            geocode(location, name, id) {
                 axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
                     params: {
                         address: location,
@@ -42,58 +42,57 @@
                 var marker = [
                     {
                         coords:{lat: lat, lng: lng },
-                        content: '<h4>'+name+' Neighbors</h4><br><a class="text-primary" href="https://www.google.com/maps/dir///@37.8063244,-122.2767202,15z/data=!4m2!4m1!3e0">Get Directions</a>'
-                    
+                        content: '<h4>'+id+'. '+name+' Community</h4><br><a href="https://www.google.com/maps/dir///@'+lat+','+lng+',15z/data=!4m2!4m1!3e0">Get Directions</a>',
+                    	id: id,
                     }
                 ]
                 addMarker(marker[0])
                 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        };
-        
-    }
+	            })
+	            .catch(function (error) {
+	                console.log(error);
+	            });
+	        };
+	    }
 
-    function addMarker(props) {
-        var marker = new google.maps.Marker({
-            position: props.coords,
-            map: map,
-            icon:'http://maps.google.com/mapfiles/ms/icons/campground.png'
-        });
-        //Check for custom icon
-        if (props.iconImage) {
-            //Set icon image
-            marker.setIcon(props.iconImage);
-        }
-        if (props.content) {
-            var infoWindow = new google.maps.InfoWindow({
-                content: props.content
-            });
+	    function addMarker(props) {
+	        var marker = new google.maps.Marker({
+	            position: props.coords,
+	            map: map,
+	            icon:'http://maps.google.com/mapfiles/ms/icons/campground.png'
+	        });
+	        //Check for custom icon
+	        if (props.iconImage) {
+	            //Set icon image
+	            marker.setIcon(props.iconImage);
+	        }
+	        if (props.content) {
+	            var infoWindow = new google.maps.InfoWindow({
+	                content: props.content
+	            });
+	
+	            marker.addListener('click', function () {
+	                infoWindow.open(map, marker);
+	            });
+	        }
+	    }
+	    var map;
+	    function initMap() {
+	        //Map options
+	        var options = {
+	            zoom: 11.5,
+	            center: { lat: 37.8043514, lng: -122.2711639 }
+	        }
+	        //New map
+	        map = new google.maps.Map(document.getElementById('map'), options);
+	    }
 
-            marker.addListener('click', function () {
-                infoWindow.open(map, marker);
-            });
-        }
-    }
-    var map;
-    function initMap() {
-        //Map options
-        var options = {
-            zoom: 13,
-            center: { lat: 37.8043514, lng: -122.2711639 }
-        }
-        //New map
-        map = new google.maps.Map(document.getElementById('map'), options);
-    }
-
-    var googMap = new GoogleMap();
-    var places = ${data}
-    for(var comm of places){
-        console.log(comm.location)
-        googMap.geocode(comm.location, comm.name)
-    }
+	    var googMap = new GoogleMap();
+	    var places = ${data}
+	    for(var comm of places){
+	        console.log(comm.location)
+	        googMap.geocode(comm.location, comm.name, comm.id)
+    	}
 	</script>
 		
 	<title>Portal</title>
@@ -182,7 +181,7 @@
 							<tbody class="tbody">
 							<c:forEach items="${communities}" var="community">
 								<tr>
-									<td class="pl-5">#</td>
+									<td class="pl-5"><c:out value="${community.id}" />.</td>
 									<td><a href="/resourcefull/neighborhood/${community.id}"><c:out value="${community.name}"/></a></td>
 									<td><c:out value="${community.residents}"/></td>
 									<td><c:out value="${community.pets}"/></td>

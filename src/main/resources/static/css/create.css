@@ -1,4 +1,59 @@
 body{
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+body{
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #99752E;
+}
+pre{
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+a{
+	color: #99752E;
+}
+a:hover{
+	color:color: #99752E;
+	text-decoration: none;
+}
+.icon1{
+	width: 27px;
+	height: auto;
+}
+.line{
+	width: 100%;
+	height: 1px;
+	background-color: #99752E;
+}
+.username{
+	color: #99752E;
+}
+.button{
+	color: #99752E;
+	border-radius: 25px;
+	border: 1px solid #99752E;
+	width: 170px;
+	height: 30px;
+}
+#map{
+	height: 600px;
+}
+.icon2, .icon3{
+	width: 15px;
+	height: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* body{
 	font-family: 'Baskervville', serif;
 }
 .topOfPage{
@@ -60,4 +115,4 @@ body{
 	height: 450px;
 	margin-left: 20%;
 	margin-top: 150px;
-}
+ */
