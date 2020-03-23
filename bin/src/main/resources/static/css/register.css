@@ -1,0 +1,36 @@
+body{
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #99752E;
+}
+pre{
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+a{
+	color: #99752E;
+}
+a:hover{
+	color: #99752E;
+	text-decoration: none;
+}
+.line{
+	width: 100%;
+	height: 1px;
+	background-color: #99752E;
+}
+.icon1{
+	width: 27px;
+	height: auto;
+}
+.username{
+	color: #99752E;
+}
+#active{
+	color: #99752E;
+}
+.signupbutton, .acceptbutton{
+	color: #99752E;
+	border-radius: 25px;
+	border: 1px solid #99752E;
+	width: 120px;
+	height: 30px;
+}
