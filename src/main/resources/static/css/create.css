@@ -1,63 +1,69 @@
 body{
-	font-family: 'Baskervville', serif;
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #99752E;
 }
-.topOfPage{
+pre{
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+a{
+	color: #99752E;
+}
+a:hover{
+	color:color: #99752E;
+	text-decoration: none;
+}
+.icon1{
+	width: 27px;
+	height: auto;
+}
+.line{
 	width: 100%;
-	height: 450px;
-	background-image: url("/img/banner2.jpg");
-	background-repeat: no-repeat;
+	height: 1px;
+	background-color: #99752E;
 }
-.logo{
-	width: 15%;
-	margin-left: 40%;
-	margin-top: 80px;
+.username{
+	color: #99752E;
 }
-.navbar{
- 	display: inline-block;
+#active{
+	color: #99752E;
 }
-.title{
-	font-size: 50px;
-	font-weight: bolder;
-	margin-top: 80px;
-	color: white;
+#table{
+	border-radius: 20px;
+	border: .5px solid #DEE1E6;
+	height: 550px;
 }
-.whiteLine{
-	width: 100%;
-	height: 2px;
-	margin-top: 90px;
-	background-color: white;
+.thead, .tbody{
+	color: #99752E;
 }
-.navbar{
-	color: white;
-	font-family: "Work Sans", sans-serif;
-	margin-left: 1%;
+.tablebutton, .submitbutton{
+	color: #99752E;
+	border-radius: 25px;
+	border: 1px solid #99752E;
+	width: 120px;
+	height: 30px;
 }
-.movenavbar{
-	margin-left: 550px;
+.button{
+	color: #99752E;
+	border-radius: 25px;
+	border: 1px solid #99752E;
+	width: 170px;
+	height: 30px;
 }
-.add {
-	margin-top: 50px;
-	margin-bottom: 10px;
-	margin-left: 13%;
-	font-size: 30px;
-	font-family: "Work Sans", sans-serif;
+#map{
+	height: 600px;
 }
-.col{
-	display: inline-block;
-	vertical-align: top;
+.leavemessagebox{
+	
+	border: .5px solid #99752E;
+	height: 350px;
 }
-.addBox {
-	width: 100%;
-	height: 750px;
-	padding: 15px;
-	border: 2px solid black;
-	border-radius: 3px;
-	font-size: 30px;
-	font-family: "Work Sans", sans-serif;
+.allmessagesbox{
+	border: .5px solid #99752E;
+	height: 350px;
+	overflow: scroll;
 }
-.quote {
-	width: 90%;
-	height: 450px;
-	margin-left: 20%;
-	margin-top: 150px;
+
+.icon2, .icon3{
+	width: 15px;
+	height: 25px;
 }
