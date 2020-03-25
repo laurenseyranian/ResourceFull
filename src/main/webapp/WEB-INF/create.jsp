@@ -6,12 +6,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
     <link href="/css/create.css" rel="stylesheet" type="text/css"/>
+
+	<title>Create</title>
 	
-	 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -23,6 +26,36 @@
                 this.key = 'AIzaSyD9XuSocOU1HX2gzkpBUWfMxFp6b3uwiVU'
             }
 
+            geocode(location, name) {
+                axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                    params: {
+                        address: location,
+                        key: 'AIzaSyD9XuSocOU1HX2gzkpBUWfMxFp6b3uwiVU'
+                    }
+                })
+                .then((response) => {
+
+                    //log full response
+                    console.log(response);
+
+                //geometry
+                var lat = response.data.results[0].geometry.location.lat;
+                var lng = response.data.results[0].geometry.location.lng;
+                var marker = [
+                    {
+                        coords:{lat: lat, lng: lng },
+                        content: '<h4>'+name+' Neighbors</h4>'
+                    }
+                ]
+                addMarker(marker[0])
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        };
+        
+    }
             geocode(location, name) {
                 axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
                     params: {
@@ -91,9 +124,6 @@
     googMap.geocode(comm.location, comm.name);
     
 	</script>
-	
-	<title>Add A Community</title>
-	
 </head>
 
 <body>
@@ -354,14 +384,161 @@
 							value="Submit" />
 					<a class="btn btn-outline-danger mt-3" href="/resourcefull/home">Cancel</a>
 					</form:form>
+=======
+>>>>>>> Test_Lauren
 				</div>
 			</div>
-			<div class="col-5 mapApi">
-				<img src="/img/quote.jpg" alt="error" class="quote">
+			<div class="col-auto mt-4 pl-0">
+				<img class="icon1" src="/images/signin.png" alt="error">
 			</div>
+			<div class="col-md-1"></div> 
+		</div> <!-- End of Header -->
+
+		<div id="navbar" class="row">
+			<div class="line mt-2 mb-2"></div>
+			<div class="col-md-1"></div> 
+			<div class="col-10">
+				<ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
+					<li class="nav-item">
+				    	<a class="nav-link" href="/resourcefull">HOME</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link active" id="active" href="/resourcefull/my-portal">MY PORTAL</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="/resourcefull/get-involved">GET INVOLVED</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="/resourcefull/news">NEWS</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="/resourcefull/about">ABOUT</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="/resourcefull/contact">CONTACT</a>
+				  	</li>
+				</ul>
+			</div>
+		</div> <!-- End of NavBar -->
+
+		<div class="body mt-5">
+			<div class="row">
+				<div class="col-md-1"></div> 
+				<div class="col">
+					<h1>Add a Community</h1>
+				</div>
+				<div class="col-auto">
+					<a href="/resourcefull/my-portal">View All Communities ></a>
+				</div>
+				<div class="col-md-1"></div> 
+			</div> <!-- End of Row with Page header-->
+			
+			<div class="row">
+				<div class="col-md-1"></div> 
+				<div class="col-sm-5">
+					<div class="mt-5">
+						<form:form action="/community/process" method="post" modelAttribute="community">
+							<p>
+								<form:label path="name" class=" col-form-label">Neighborhood: </form:label>
+								<form:select path="name">
+									<c:forEach items="${names}" var="name">
+										<form:option value="${name}">${name}</form:option>
+									</c:forEach>
+								</form:select>
+							</p>
+				
+							<p>
+								<form:label path="location" class="lead col-form-label">Location (nearest intersection, city, state): </form:label>
+								<form:input path="location" type="text" class="form-control" />
+							</p>
+							
+							<p>
+								<form:label path="residents" class="lead col-form-label"># of Residents: </form:label>
+								<form:input path="residents" type="number" class="form-control" />
+							</p>
+				
+							<p>
+								<form:label path="pets" class="lead col-form-label"># of Pets: </form:label>
+								<form:input path="pets" type="number" class="form-control" />
+							</p>
+				
+							<p>
+								<form:label path="liaisoncontactname" class="lead col-form-label">Contact Name: </form:label>
+								<form:input path="liaisoncontactname" type="text" class="form-control" />
+							</p>
+				
+							<p>
+								<form:label path="liaisoncontactnumber" class="lead col-form-label">Contact Phone: </form:label>
+								<form:input path="liaisoncontactnumber" type="text" class="form-control" />
+							</p>
+				
+							<input class="btn btn-outline btn-sm mt-3 button" type="submit" value="Submit" />
+							<a class="btn btn-outline btn-sm mt-3 button" href="/resourcefull/my-portal">Cancel</a>
+						</form:form>
+					</div>
+				</div> <!-- End of Row with Form and Buttons -->	 
+				<div class="col-sm-5">
+					<div class="mt-5" id="map"></div>
+				</div>
+			</div> <!-- End of Row with Table and Map-->
+		</div> <!-- End of Body -->	
 		
+		<div class="footer mt-5">
+			<div class="row">
+				<div class="col-md-1"></div> 
+				<div class="col-7 mt-5 ml-2">
+					<h2>Keeping Neighbors<br>Safe Where They Are</h2>
+				</div>
+				
+				<div class="col-1 mt-5">
+					<ul style="list-style-type:none;">
+						<li id="middle1"><a href="">Resourcefull</a></li>
+						<li><a href="">About Us</a></li>
+						<li><a href="">Partners</a></li>
+						<li><a href="/resourcefull/get-involved">Get Involved</a></li>		
+						<li><a href="/resourcefull/news">News</a></li>
+						<li><a href="/resourcefull/contact">Contact</a></li>						
+						<li><a href="">Support</a>
+					</ul>
+				</div>
+				
+				<div class="col-1 mt-5">
+					<ul style="list-style-type:none;">
+						<li id="right1"><a href="">Get In Touch</a></li>
+						<li><a href="">Linkedin</a></li>
+						<li><a href="">Twitter</a></li>
+						<li><a href="">Facebook</a></li>
+						<li><a href="">Instagram</a></li>
+					</ul>
+				</div>
+				<div class="col-md-1"></div> 
+			</div>
+			
+			<div class="row mt-5">
+				<div class="col-md-1"></div> 
+				<div class="col-6 row mt-5 mr-4 ml-1">
+					<img class="icon2" src="/images/renewable.png" alt="error">
+					<p>Resourcefull is powered by 100% renewable energy</p>
+				</div>
+				
+				<div class="col-2 mt-5">
+					<pre><a href="">Terms of Use</a>  |  <a href="">Privacy Policy</a>  |  <a href="">Legal</a></pre>
+				</div>
+				
+				<div class="col-2 row mt-5">
+					<img class="icon3" src="/images/copyright.png" alt="error">
+					<p>2020 Resourcefull</p>
+				</div>
+				<div class="col-md-1"></div> 
+			</div> <!-- End of Row with Copyright -->	
+		</div> <!-- End of Row with Footer -->
+		
+<<<<<<< HEAD
 	<!-- end of row -->
 		</div>
 	</div> --%>
+=======
+	</div> <!-- End of Container -->
+>>>>>>> Test_Lauren
 </body>
 </html>

@@ -62,13 +62,22 @@ public class CommunityController {
 // GET route for CREATING a neighborhood (User must be logged in)
 //--------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/add/neighborhood")
-	public String getCreateNeighborhood(@ModelAttribute("community") Community community, Model model) {
-		model.addAttribute("names", names);
+	public String getCreateNeighborhood(@ModelAttribute("community") Community community, Model model, Principal principal) {
+		Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		if (principal != null) {
+			model.addAttribute("names", names);
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+			model.addAttribute("communities", communityService.findAll());
+			List<Community> comms = communityService.findAll();
+	        model.addAttribute("communities", comms);
+	        model.addAttribute("data", gsonBuilder.toJson(comms));
+		}
 		return "create.jsp";
 	}
 
 //--------------------------------------------------------------------------------------------
-// POST route for CREATING a neighborhood  
+// POST route for CREATING a community  
 //--------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/community/process", method = RequestMethod.POST)
 	public String postCreateNeighborhood(@Valid @ModelAttribute("community") Community community,
@@ -133,7 +142,6 @@ public class CommunityController {
 	@RequestMapping("/resourcefull/my-portal")
 	public String home(Principal principal, Model model, HttpSession session) {
 		Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-
 		if (principal != null) {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
@@ -214,23 +222,31 @@ public class CommunityController {
 // GET route for UPDATING one neighborhood by ID
 // ------------------------------------------------------------------------------------------------------
 	@RequestMapping("/resourcefull/edit/neighborhood/{community_id}")
-	public String getUpdateNeighborhood(@PathVariable("community_id") Long community_id, Model model,
-			@ModelAttribute("community") Community community) {
-		Community comm = communityService.findCommunityById(community_id);
-		model.addAttribute("community", comm);
-		model.addAttribute("names", names);
-		return "edit.jsp";
+	public String getUpdateNeighborhood(@PathVariable("community_id") Long community_id, Model model, @ModelAttribute("community") Community community, Principal principal) {
+		Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		if (principal != null) {
+			model.addAttribute("names", names);
+			String username = principal.getName();
+			model.addAttribute("currentUser", userService.findByUsername(username));
+			model.addAttribute("communities", communityService.findAll());
+			List<Community> comms = communityService.findAll();
+	        model.addAttribute("communities", comms);
+	        model.addAttribute("data", gsonBuilder.toJson(comms));
+			Community comm = communityService.findCommunityById(community_id);
+			model.addAttribute("community", comm);
+			model.addAttribute("names", names);
+		}
+		return "update.jsp";
 	}
 
 //------------------------------------------------------------------------------------------------------
 // POST route for UPDATE one neighborhood by ID
 //------------------------------------------------------------------------------------------------------    
 	@PutMapping("/neighborhood/{id}/update")
-	public String postUpdateNeighborhood(Model model, @PathVariable("id") Long community_id,
-			@Valid @ModelAttribute("community") Community community, BindingResult result) {
+	public String postUpdateNeighborhood(Model model, @PathVariable("id") Long community_id, @Valid @ModelAttribute("community") Community community, BindingResult result) {
 		model.addAttribute("names", names);
 		if (result.hasErrors()) {
-			return "edit.jsp";
+			return "update.jsp";
 		} else {
 			this.communityService.createOrUpdateCommunity(community);
 			return "redirect:/resourcefull/neighborhood/" + community_id;
